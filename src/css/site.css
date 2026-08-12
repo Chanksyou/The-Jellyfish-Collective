@@ -9,6 +9,7 @@
   --bell-hot:   #FFB6F5;  /* the brightest point of the glow */
   --tendril:    #8B5CF6;  /* violet — tendrils, secondary accent */
   --ember:      #FF8A5C;  /* warm coral — the fire pits outside */
+  --lagoon:     #4FA0FF;  /* electric blue — DJ booth / disco-ball light, used off the jelly */
 
   --foam:       #F3E9F7;  /* primary text */
   --drift:      #A597B8;  /* secondary text */
@@ -47,7 +48,8 @@ body::before {
   pointer-events: none;
   background:
     radial-gradient(120% 70% at 50% -10%, rgba(226, 63, 209, 0.10), transparent 60%),
-    radial-gradient(80% 50% at 85% 20%, rgba(139, 92, 246, 0.07), transparent 65%);
+    radial-gradient(80% 50% at 85% 20%, rgba(139, 92, 246, 0.07), transparent 65%),
+    radial-gradient(70% 55% at 8% 92%, rgba(79, 160, 255, 0.08), transparent 65%);
   z-index: 0;
 }
 
@@ -250,7 +252,7 @@ a:hover { color: var(--bell-hot); }
 blockquote {
   margin: 2rem 0;
   padding-left: 1.25rem;
-  border-left: 2px solid var(--tendril);
+  border-left: 2px solid var(--lagoon);
   color: var(--drift);
 }
 
@@ -260,7 +262,7 @@ blockquote {
 .footer {
   position: relative;
   z-index: 2;
-  border-top: 1px solid rgba(141, 162, 181, 0.15);
+  border-top: 1px solid rgba(79, 160, 255, 0.18);
   padding: 2.5rem var(--gutter) 3.5rem;
   text-align: center;
 }
@@ -287,7 +289,7 @@ blockquote {
   font-size: 0.7rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: rgba(141, 162, 181, 0.5);
+  color: rgba(79, 160, 255, 0.55);
   margin: 2rem 0 0;
 }
 
