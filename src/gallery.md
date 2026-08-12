@@ -14,66 +14,24 @@ tagline: Years of jellyfish, in no particular order.
 <div class="gallery">
 
   <figure class="tall">
-    <img src="/img/showcation-pixiedream-2025-05-16-proquality-horizontal-cabins-music2.webp"
-         alt="Pixiedream cabins at Showcation"
-         loading="lazy" width="1600" height="1065">
-    <figcaption>Pixiedream cabins <span class="year">Showcation 2025</span></figcaption>
-  </figure>
-
-  <figure class="tall">
-    <img src="/img/20250516-204502.webp"
-         alt="The Jellyfish Collective at Showcation"
-         loading="lazy" width="1600" height="2133">
-    <figcaption>Showcation <span class="year">May 2025</span></figcaption>
-  </figure>
-
-  <figure class="tall">
-    <img src="/img/20250518-034031.webp"
-         alt="The Jellyfish Collective at Showcation"
-         loading="lazy" width="1600" height="2133">
-    <figcaption>Showcation <span class="year">May 2025</span></figcaption>
-  </figure>
-
-  <figure class="tall">
-    <img src="/img/20250518-034826.webp"
-         alt="The Jellyfish Collective at Showcation"
-         loading="lazy" width="1600" height="2133">
-    <figcaption>Showcation <span class="year">May 2025</span></figcaption>
+    <img src="/img/PLACEHOLDER.webp"
+         alt="The lounge at night, jellyfish lit from within"
+         loading="lazy" width="1600" height="900">
+    <figcaption>The lounge after dark <span class="year">Elements 2026</span></figcaption>
   </figure>
 
   <figure>
-    <img src="/img/20250519-004642.webp"
-         alt="The Jellyfish Collective at Showcation"
+    <img src="/img/PLACEHOLDER-2.webp"
+         alt="Build crew raising the main structure"
          loading="lazy" width="1600" height="1200">
-    <figcaption>Showcation <span class="year">May 2025</span></figcaption>
+    <figcaption>Build day <span class="year">Elements 2026</span></figcaption>
   </figure>
 
   <figure>
-    <img src="/img/20250519-004642-1.webp"
-         alt="The Jellyfish Collective at Showcation"
+    <img src="/img/PLACEHOLDER-3.webp"
+         alt="Shelly the art car"
          loading="lazy" width="1600" height="1200">
-    <figcaption>Showcation <span class="year">May 2025</span></figcaption>
-  </figure>
-
-  <figure class="tall">
-    <img src="/img/img-1693.webp"
-         alt="The Jellyfish Collective"
-         loading="lazy" width="1600" height="2133">
-    <figcaption>The Jellyfish Collective</figcaption>
-  </figure>
-
-  <figure class="tall">
-    <img src="/img/img-1809.webp"
-         alt="The Jellyfish Collective"
-         loading="lazy" width="1600" height="2133">
-    <figcaption>The Jellyfish Collective</figcaption>
-  </figure>
-
-  <figure class="tall">
-    <img src="/img/img-2252.webp"
-         alt="The Jellyfish Collective"
-         loading="lazy" width="1600" height="2133">
-    <figcaption>The Jellyfish Collective</figcaption>
+    <figcaption>Shelly <span class="year">Showcation 2026</span></figcaption>
   </figure>
 
 </div>

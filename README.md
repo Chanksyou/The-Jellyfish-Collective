@@ -18,6 +18,7 @@ Everything you'd normally want to change lives in `src/`:
 | Colors and type | the top block of `src/css/site.css` |
 | Nav links | `src/_includes/layout.njk` |
 | 404 page | `src/404.md` |
+| Members page | `src/members.md` |
 
 Push to `main` and Cloudflare rebuilds automatically.
 
