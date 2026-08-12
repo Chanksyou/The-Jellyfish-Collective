@@ -17,6 +17,7 @@ Everything you'd normally want to change lives in `src/`:
 | Join page | `src/join.md` |
 | Colors and type | the top block of `src/css/site.css` |
 | Nav links | `src/_includes/layout.njk` |
+| 404 page | `src/404.md` |
 
 Push to `main` and Cloudflare rebuilds automatically.
 
@@ -33,8 +34,15 @@ To build without serving: `npm run build` (output lands in `_site/`).
 
 ## Cloudflare settings
 
+Deployed as a Cloudflare Worker serving static assets. `wrangler.jsonc` points
+Cloudflare at the built output.
+
 - Build command: `npm run build`
-- Output directory: `_site`
+- Deploy command: `npx wrangler deploy` (the default)
+- Assets directory: `_site`, set in `wrangler.jsonc`
+
+If a build fails on an old Node version, add an environment variable
+`NODE_VERSION` = `22` in the Worker's build settings.
 
 ## House rules
 

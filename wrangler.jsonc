@@ -1,0 +1,9 @@
+{
+  // Tells Cloudflare this Worker just serves the static files Eleventy built.
+  "name": "jellyfish-collective",
+  "compatibility_date": "2026-08-12",
+  "assets": {
+    "directory": "./_site",
+    "not_found_handling": "404-page"
+  }
+}
