@@ -1,0 +1,13 @@
+{
+  "name": "jellyfish-collective",
+  "version": "1.0.0",
+  "description": "Jellyfish Collective website",
+  "scripts": {
+    "start": "eleventy --serve",
+    "build": "eleventy"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0"
+  },
+  "type": "module"
+}
