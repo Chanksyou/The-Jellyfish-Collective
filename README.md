@@ -52,5 +52,23 @@ repo is public — anything committed here is readable by anyone, including
 files that aren't linked from a page. Member logistics belong in the private
 tools, not here.
 
-Photos: resize to 1600px on the long edge and export WebP at ~80% before
-adding to `src/img/`.
+## Photos
+
+Compress before committing. Git keeps every version of every file forever, so
+a 6 MB JPEG stays in the repo's history even after you replace it with a
+smaller one.
+
+- 1600px on the long edge, WebP at ~80% quality
+- Landing and gallery images: aim under 200 KB each
+- Keep `src/img/` under about 20 MB total
+- Always set `alt`, `loading="lazy"`, and `width`/`height` so the page doesn't
+  jump while images load
+
+Fastest route: put the originals in a folder and ask Claude Code to compress
+them into `src/img/`. Or use squoosh.app one at a time.
+
+**Video does not go in this repo.** Embed from Instagram or YouTube instead —
+video files bloat the repo permanently and Cloudflare is not a video host.
+
+**Faces:** check with people before publishing recognizable shots where they
+aren't obviously performing.

@@ -281,3 +281,59 @@ blockquote {
   color: rgba(141, 162, 181, 0.5);
   margin: 2rem 0 0;
 }
+
+/* ==========================================================================
+   MEDIA
+   Photos sit slightly wider than the text measure so they read as windows
+   rather than illustrations. Quiet treatment on purpose — the jellyfish in
+   the hero is the only loud thing on this site.
+   ========================================================================== */
+.prose img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid rgba(95, 227, 200, 0.18);
+  background: var(--deep);
+}
+
+/* Pull media out to a wider column on roomy screens. */
+figure,
+.gallery {
+  margin: 2.5rem 0;
+}
+@media (min-width: 60rem) {
+  figure,
+  .gallery {
+    width: calc(100% + 8rem);
+    margin-left: -4rem;
+  }
+}
+
+figcaption {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  color: var(--drift);
+  margin-top: 0.7rem;
+}
+figcaption .year { color: var(--tendril); }
+
+/* Gallery grid. Add or remove <figure>s and it reflows on its own. */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 1rem;
+}
+.gallery figure {
+  width: auto;
+  margin: 0;
+}
+.gallery img { aspect-ratio: 4 / 3; object-fit: cover; }
+
+/* One photo that runs the full width of its row. */
+.gallery figure.tall { grid-column: span 2; }
+.gallery figure.tall img { aspect-ratio: 16 / 9; }
+@media (max-width: 40rem) {
+  .gallery figure.tall { grid-column: span 1; }
+  .gallery figure.tall img { aspect-ratio: 4 / 3; }
+}
