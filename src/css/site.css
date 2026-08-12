@@ -3,15 +3,15 @@
    Everything else on the site derives from them.
    ========================================================================== */
 :root {
-  --abyss:      #060B14;  /* page ground — deep ocean, not black */
-  --deep:       #0C1A2B;  /* raised surfaces, rules */
-  --bell:       #5FE3C8;  /* bioluminescent cyan-green — the bell */
-  --bell-hot:   #A8FFEE;  /* the brightest point of the glow */
-  --tendril:    #B07CFF;  /* violet — tendrils, secondary accent */
-  --ember:      #FF9E7A;  /* warm coral — the fire pits outside */
+  --abyss:      #0B0614;  /* page ground — deep UV-night violet, not black */
+  --deep:       #170F2B;  /* raised surfaces, rules */
+  --bell:       #E23FD1;  /* bioluminescent magenta — the bell */
+  --bell-hot:   #FFB6F5;  /* the brightest point of the glow */
+  --tendril:    #8B5CF6;  /* violet — tendrils, secondary accent */
+  --ember:      #FF8A5C;  /* warm coral — the fire pits outside */
 
-  --foam:       #E6F2EF;  /* primary text */
-  --drift:      #8DA2B5;  /* secondary text */
+  --foam:       #F3E9F7;  /* primary text */
+  --drift:      #A597B8;  /* secondary text */
 
   --display: "Fraunces", Georgia, serif;
   --body:    "Karla", system-ui, sans-serif;
@@ -46,8 +46,8 @@ body::before {
   inset: 0;
   pointer-events: none;
   background:
-    radial-gradient(120% 70% at 50% -10%, rgba(95, 227, 200, 0.10), transparent 60%),
-    radial-gradient(80% 50% at 85% 20%, rgba(176, 124, 255, 0.07), transparent 65%);
+    radial-gradient(120% 70% at 50% -10%, rgba(226, 63, 209, 0.10), transparent 60%),
+    radial-gradient(80% 50% at 85% 20%, rgba(139, 92, 246, 0.07), transparent 65%);
   z-index: 0;
 }
 
@@ -126,7 +126,7 @@ a:hover { color: var(--bell-hot); }
   top: 8%;
   width: min(70vw, 34rem);
   aspect-ratio: 1;
-  background: radial-gradient(circle, rgba(95, 227, 200, 0.16), transparent 62%);
+  background: radial-gradient(circle, rgba(226, 63, 209, 0.16), transparent 62%);
   filter: blur(28px);
   animation: breathe 11s ease-in-out infinite;
 }
@@ -136,7 +136,7 @@ a:hover { color: var(--bell-hot); }
   width: min(46vw, 15rem);
   height: auto;
   overflow: visible;
-  filter: drop-shadow(0 0 22px rgba(95, 227, 200, 0.35));
+  filter: drop-shadow(0 0 22px rgba(226, 63, 209, 0.35));
 }
 
 .jelly__body { animation: pulse 6.5s ease-in-out infinite; transform-box: fill-box; transform-origin: 50% 30%; }
@@ -240,8 +240,8 @@ a:hover { color: var(--bell-hot); }
   margin: 3.5rem 0;
   background: linear-gradient(90deg,
     transparent,
-    rgba(95, 227, 200, 0.35) 20%,
-    rgba(176, 124, 255, 0.35) 60%,
+    rgba(226, 63, 209, 0.35) 20%,
+    rgba(139, 92, 246, 0.35) 60%,
     transparent);
 }
 
@@ -301,7 +301,7 @@ blockquote {
   display: block;
   width: 100%;
   height: auto;
-  border: 1px solid rgba(95, 227, 200, 0.18);
+  border: 1px solid rgba(226, 63, 209, 0.18);
   background: var(--deep);
 }
 
