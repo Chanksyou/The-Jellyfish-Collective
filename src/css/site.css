@@ -74,18 +74,26 @@ a:hover { color: var(--bell-hot); }
   display: flex;
   flex-wrap: wrap;
   gap: 1rem 2rem;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
   padding: 1.75rem var(--gutter);
 }
 
 .wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
   font-family: var(--display);
   font-size: 1.15rem;
   font-weight: 500;
   letter-spacing: 0.01em;
   text-decoration: none;
   color: var(--foam);
+}
+.wordmark__logo {
+  width: auto;
+  height: 2.1rem;
+  flex: none;
 }
 .wordmark__jelly { color: var(--bell); }
 .wordmark__collective { color: var(--drift); font-weight: 300; }
