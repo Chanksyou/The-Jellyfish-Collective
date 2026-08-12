@@ -1,0 +1,48 @@
+# Jellyfish Collective
+
+Static site. Content is Markdown, layout is one Nunjucks template, build is
+Eleventy. No database, no CMS, no server.
+
+## Editing
+
+Everything you'd normally want to change lives in `src/`:
+
+| To change | Edit |
+|---|---|
+| Landing page | `src/index.md` |
+| Dues, roles, expectations | `src/how-it-works.md` |
+| Past activations | `src/activations/past.md` |
+| Next activation | `src/activations/upcoming.md` |
+| Build and safety docs | `src/technical/index.md` |
+| Join page | `src/join.md` |
+| Colors and type | the top block of `src/css/site.css` |
+| Nav links | `src/_includes/layout.njk` |
+
+Push to `main` and Cloudflare rebuilds automatically.
+
+## Running it locally
+
+```
+npm install
+npm start
+```
+
+Then open http://localhost:8080. It reloads as you save.
+
+To build without serving: `npm run build` (output lands in `_site/`).
+
+## Cloudflare settings
+
+- Build command: `npm run build`
+- Output directory: `_site`
+
+## House rules
+
+**No member data in this repo.** No rosters, phone numbers, emails, home
+addresses, Venmo handles, dues ledgers, budgets, or storage locations. The
+repo is public — anything committed here is readable by anyone, including
+files that aren't linked from a page. Member logistics belong in the private
+tools, not here.
+
+Photos: resize to 1600px on the long edge and export WebP at ~80% before
+adding to `src/img/`.

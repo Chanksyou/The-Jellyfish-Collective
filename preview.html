@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jellyfish Collective</title>
+<meta name="description" content="DJs, artists, engineers, designers, DIYers, and friends building immersive spaces at festivals.">
+
+<meta property="og:title" content="Jellyfish Collective">
+<meta property="og:description" content="DJs, artists, engineers, designers, DIYers, and friends building immersive spaces at festivals.">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500&family=Karla:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================================
+   PALETTE — swap these six values to match the deck exactly.
+   Everything else on the site derives from them.
+   ========================================================================== */
+:root {
+  --abyss:      #060B14;  /* page ground — deep ocean, not black */
+  --deep:       #0C1A2B;  /* raised surfaces, rules */
+  --bell:       #5FE3C8;  /* bioluminescent cyan-green — the bell */
+  --bell-hot:   #A8FFEE;  /* the brightest point of the glow */
+  --tendril:    #B07CFF;  /* violet — tendrils, secondary accent */
+  --ember:      #FF9E7A;  /* warm coral — the fire pits outside */
+
+  --foam:       #E6F2EF;  /* primary text */
+  --drift:      #8DA2B5;  /* secondary text */
+
+  --display: "Fraunces", Georgia, serif;
+  --body:    "Karla", system-ui, sans-serif;
+  --mono:    "IBM Plex Mono", ui-monospace, monospace;
+
+  --measure: 34rem;
+  --gutter: clamp(1.25rem, 5vw, 3rem);
+}
+
+/* ==========================================================================
+   BASE
+   ========================================================================== */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0;
+  background: var(--abyss);
+  color: var(--foam);
+  font-family: var(--body);
+  font-size: clamp(1rem, 0.96rem + 0.2vw, 1.0625rem);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Ambient depth: a faint current of light from above. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(120% 70% at 50% -10%, rgba(95, 227, 200, 0.10), transparent 60%),
+    radial-gradient(80% 50% at 85% 20%, rgba(176, 124, 255, 0.07), transparent 65%);
+  z-index: 0;
+}
+
+.skip {
+  position: absolute;
+  left: -9999px;
+  background: var(--bell);
+  color: var(--abyss);
+  padding: 0.5rem 1rem;
+  font-family: var(--mono);
+}
+.skip:focus { left: 1rem; top: 1rem; z-index: 100; }
+
+a { color: var(--bell); text-decoration-thickness: 1px; text-underline-offset: 0.2em; }
+a:hover { color: var(--bell-hot); }
+:focus-visible { outline: 2px solid var(--ember); outline-offset: 3px; }
+
+/* ==========================================================================
+   MASTHEAD
+   ========================================================================== */
+.masthead {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2rem;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 1.75rem var(--gutter);
+}
+
+.wordmark {
+  font-family: var(--display);
+  font-size: 1.15rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  color: var(--foam);
+}
+.wordmark__jelly { color: var(--bell); }
+.wordmark__collective { color: var(--drift); font-weight: 300; }
+
+.masthead nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  font-family: var(--mono);
+  font-size: 0.775rem;
+  letter-spacing: 0.06em;
+  text-transform: lowercase;
+}
+.masthead nav a { color: var(--drift); text-decoration: none; }
+.masthead nav a:hover { color: var(--bell); }
+
+/* ==========================================================================
+   HERO — the signature element
+   ========================================================================== */
+.hero {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  padding: clamp(1rem, 4vw, 3rem) 0 0;
+}
+
+.hero__bloom {
+  position: absolute;
+  top: 8%;
+  width: min(70vw, 34rem);
+  aspect-ratio: 1;
+  background: radial-gradient(circle, rgba(95, 227, 200, 0.16), transparent 62%);
+  filter: blur(28px);
+  animation: breathe 11s ease-in-out infinite;
+}
+
+.jelly {
+  position: relative;
+  width: min(46vw, 15rem);
+  height: auto;
+  overflow: visible;
+  filter: drop-shadow(0 0 22px rgba(95, 227, 200, 0.35));
+}
+
+.jelly__body { animation: pulse 6.5s ease-in-out infinite; transform-origin: 50% 30%; }
+.t { animation: drift 9s ease-in-out infinite; transform-origin: 50% 0; }
+.t1 { animation-duration: 8s;  animation-delay: -1.5s; }
+.t2 { animation-duration: 10s; animation-delay: -3s; }
+.t3 { animation-duration: 9s; }
+.t4 { animation-duration: 11s; animation-delay: -2s; }
+.t5 { animation-duration: 8.5s; animation-delay: -4s; }
+
+@keyframes pulse {
+  0%, 100% { transform: scaleY(1) scaleX(1); }
+  45%      { transform: scaleY(0.93) scaleX(1.04); }
+}
+@keyframes drift {
+  0%, 100% { transform: translateX(0) rotate(0deg); }
+  50%      { transform: translateX(4px) rotate(1.2deg); }
+}
+@keyframes breathe {
+  0%, 100% { opacity: 0.75; transform: scale(1); }
+  50%      { opacity: 1;    transform: scale(1.08); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .jelly__body, .t, .hero__bloom { animation: none; }
+}
+
+/* ==========================================================================
+   TYPE / PROSE
+   ========================================================================== */
+.prose {
+  position: relative;
+  z-index: 2;
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: clamp(2rem, 6vw, 4rem) var(--gutter) 5rem;
+}
+.prose--home { padding-top: clamp(1rem, 3vw, 2rem); }
+
+.pagehead { margin-bottom: 3rem; }
+
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--tendril);
+  margin: 0 0 0.75rem;
+}
+
+.prose h1 {
+  font-family: var(--display);
+  font-weight: 300;
+  font-size: clamp(2.25rem, 7vw, 3.25rem);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  margin: 0;
+}
+
+.lede {
+  font-size: 1.15rem;
+  color: var(--drift);
+  margin: 1rem 0 0;
+}
+
+.prose h2 {
+  font-family: var(--display);
+  font-weight: 300;
+  font-size: clamp(1.6rem, 4vw, 2.1rem);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin: 3.5rem 0 1rem;
+}
+.prose--home h2 { color: var(--bell); }
+
+.prose h3 {
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ember);
+  margin: 2.5rem 0 0.75rem;
+}
+
+.prose p { margin: 0 0 1.25rem; }
+.prose strong { color: var(--bell-hot); font-weight: 600; }
+
+.prose ul { padding-left: 1.1rem; margin: 0 0 1.5rem; }
+.prose li { margin-bottom: 0.6rem; }
+.prose li::marker { color: var(--tendril); }
+
+.prose ol { padding-left: 1.3rem; margin: 0 0 1.5rem; }
+.prose ol li::marker { font-family: var(--mono); color: var(--tendril); font-size: 0.85em; }
+
+/* Section rules: a band of light, not a border. */
+.prose hr {
+  border: 0;
+  height: 1px;
+  margin: 3.5rem 0;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(95, 227, 200, 0.35) 20%,
+    rgba(176, 124, 255, 0.35) 60%,
+    transparent);
+}
+
+.prose em { color: var(--drift); }
+
+blockquote {
+  margin: 2rem 0;
+  padding-left: 1.25rem;
+  border-left: 2px solid var(--tendril);
+  color: var(--drift);
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+.footer {
+  position: relative;
+  z-index: 2;
+  border-top: 1px solid rgba(141, 162, 181, 0.15);
+  padding: 2.5rem var(--gutter) 3.5rem;
+  text-align: center;
+}
+.footer__mark {
+  font-family: var(--display);
+  font-weight: 300;
+  font-size: 1.05rem;
+  color: var(--drift);
+  margin: 0 0 1.25rem;
+}
+.footer nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.25rem;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+}
+.footer nav a { color: var(--drift); text-decoration: none; }
+.footer nav a:hover { color: var(--bell); }
+.footer__note {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(141, 162, 181, 0.5);
+  margin: 2rem 0 0;
+}
+
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="masthead">
+  <a class="wordmark" href="/">
+    <span class="wordmark__jelly">Jellyfish</span>
+    <span class="wordmark__collective">Collective</span>
+  </a>
+  <nav aria-label="Primary">
+    <a href="/how-it-works/">How it works</a>
+    <a href="/activations/past/">Activations</a>
+    <a href="/technical/">How we build</a>
+    <a href="/join/">Join</a>
+  </nav>
+</header>
+
+
+<div class="hero" aria-hidden="true">
+  <div class="hero__bloom"></div>
+  <svg class="jelly" viewBox="0 0 240 420" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="bell" cx="50%" cy="38%" r="62%">
+        <stop offset="0%" stop-color="var(--bell-hot)" stop-opacity="0.95"/>
+        <stop offset="55%" stop-color="var(--bell)" stop-opacity="0.55"/>
+        <stop offset="100%" stop-color="var(--tendril)" stop-opacity="0.15"/>
+      </radialGradient>
+      <linearGradient id="strand" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="var(--bell)" stop-opacity="0.75"/>
+        <stop offset="70%" stop-color="var(--tendril)" stop-opacity="0.35"/>
+        <stop offset="100%" stop-color="var(--tendril)" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+
+    <g class="jelly__body">
+      <path class="jelly__bell" fill="url(#bell)"
+        d="M120 26c52 0 92 42 92 94 0 26-10 44-22 54-10 8-22 6-28-2-6 8-18 10-26 2-6 8-20 8-26 0-8 8-20 6-28-2-12-10-22-28-22-52 0-52 40-94 92-94z"/>
+      <path class="jelly__rim" fill="none" stroke="var(--bell-hot)" stroke-opacity="0.5" stroke-width="1.5"
+        d="M32 168c8 10 22 12 30 4 8 8 22 8 28 0 6 8 20 6 26-2 6 8 18 10 28 2"/>
+    </g>
+
+    <g class="jelly__tendrils" stroke="url(#strand)" fill="none" stroke-linecap="round">
+      <path class="t t1" stroke-width="2.5" d="M84 178c-6 60 10 96 2 150"/>
+      <path class="t t2" stroke-width="1.5" d="M104 180c4 70-12 108-4 158"/>
+      <path class="t t3" stroke-width="3" d="M120 182c0 74 8 112 0 162"/>
+      <path class="t t4" stroke-width="1.5" d="M136 180c-4 70 12 108 4 158"/>
+      <path class="t t5" stroke-width="2.5" d="M156 178c6 60-10 96-2 150"/>
+    </g>
+  </svg>
+</div>
+
+
+<main id="main" class="prose prose--home">
+  
+
+  <h2>Drift with us</h2>
+<p>The Jellyfish Collective builds immersive activations, lounges, and pop-up
+music spaces at festivals and regional burns.</p>
+<p>We're DJs, artists, sound engineers, lighting designers, DIYers, music
+enthusiasts, and friends. As a multidisciplinary crew, we handle an activation
+end to end — sound, light, structure, and environment — rather than farming
+out the parts we're not good at.</p>
+<p>We've been producing activations since 2023. But the real story starts over a
+decade before that, when most of us met at meetups, shows, and festivals,
+looking for the same thing. We curate sound, light, and environment to honor
+the dancefloors that brought us together.</p>
+<hr>
+<h2>The space</h2>
+<p>By day it's a lounge — hammocks, carpets, shade, open-sky lounging, all of it
+inside the Jellyfish soundscape. Somewhere to land between sets.</p>
+<p>After dark it turns into something else. Hanging jellyfish light installations
+overhead, lasers and LED systems timed to pulse and breathe until the room
+itself seems to move, tile flooring built for people who intend to dance until
+sunrise. Outside, tree uplighting, bench seating, and fire pits for anyone who
+wants to stay in the music without being in the middle of it.</p>
+<p>Resident and guest DJs set the tone about half the time. The rest is open for
+festival artists to drop in for unannounced sets.</p>
+<p><strong>Shelly</strong>, our art car, syncs directly to the main system so the sound stays
+unified wherever you wander.</p>
+<p>Every element, down to each individually hung jellyfish, is months of
+hands-on planning by people who care too much about it.</p>
+<p><a href="/technical/">How we build it →</a></p>
+<hr>
+<h2>How the collective works</h2>
+<p>Leadership is temporary by design. Whoever steps up as Camp Lead for a given
+activation runs that activation, and only that one. When it's over, that
+authority dissolves.</p>
+<p>There's no membership fee and no application committee. If you bring ideas or
+energy to a build, you're a jelly. Past, present, and future members have an
+equal voice while a deployment is active.</p>
+<p>Costs are covered by camp dues collected per activation and split equally
+among the people camping. Dues cover infrastructure, decor, production, and
+logistics for that event — nothing more.</p>
+<p><a href="/how-it-works/">Read the full breakdown →</a></p>
+<hr>
+<h2>Where we've been</h2>
+<p>Elements, Love Burn, and Showcation — multiple years each since 2023, with
+prime placements at Elements and Love Burn in 2026.</p>
+<p><a href="/activations/past/">See past activations →</a></p>
+<hr>
+<h2>Coming aboard</h2>
+<p>The camp grows by word of mouth and by people who show up and pitch in. If you
+found this page and something in it sounds like your kind of thing, reach out.</p>
+<p>Fair warning: this is a participation camp, not a hotel. Everyone builds,
+everyone takes a shift, everyone helps tear down. That's the whole deal, and
+it's why it works.</p>
+<p><a href="/join/">Get in touch →</a> · <a href="https://www.instagram.com/the_jellyfish_collective">@the_jellyfish_collective</a></p>
+
+</main>
+
+<footer class="footer">
+  <p class="footer__mark">Jellyfish Collective</p>
+  <nav aria-label="Footer">
+    <a href="/how-it-works/">How it works</a>
+    <a href="/activations/past/">Past</a>
+    <a href="/activations/upcoming/">Upcoming</a>
+    <a href="/technical/">How we build</a>
+    <a href="/join/">Join</a>
+    <a href="https://www.instagram.com/the_jellyfish_collective">Instagram</a>
+  </nav>
+  <p class="footer__note">Leave no trace.</p>
+</footer>
+
+</body>
+</html>
