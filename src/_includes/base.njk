@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+{# Meta data #}
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% if title %}{{ title }} · Jellyfish Collective{% else %}Jellyfish Collective{% endif %}</title>
+<meta name="description" content="{{ description | default('The Jellyfish Collective builds immersive activations, lounges, and pop-up music spaces at festivals and regional burns.') }}">
+
+<meta property="og:title" content="{{ title | default('Jellyfish Collective') }}">
+<meta property="og:description" content="{{ description }}">
+<meta property="og:type" content="website">
+
+{# Fonts #}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500&family=Karla:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+{# CSS #}
+
+<link rel="stylesheet" href="/css/site.css">
+
+{# Icons #}
+
+<link rel="icon" href="/img/favicon.png">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+</head>
+
+<body>
+
+{% include "navbar.njk" %}
+
+{{ content | safe }}
+
+{% include "footer.njk" %}
+
+</body>
+</html>
