@@ -1,0 +1,26 @@
+<header class="masthead">
+  <a class="wordmark" href="/">
+    <img class="wordmark__icon" src="/img/favicon.png" alt="">
+    <span class="wordmark__jelly">Jellyfish</span>
+    <span class="wordmark__collective">Collective</span>
+  </a>
+  <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="primary-nav">
+    <span></span><span></span><span></span>
+  </button>
+  <nav id="primary-nav" aria-label="Primary">
+    <a href="/how-it-works/">How it works</a>
+    <a href="/activations/past/">Activations</a>
+    <a href="/technical/">How we build</a>
+    <a href="/members/">Members</a>
+    <a href="/join/">Join</a>
+  </nav>
+</header>
+<script>
+  const toggle = document.querySelector('.nav-toggle');
+  const nav = document.getElementById('primary-nav');
+  toggle.addEventListener('click', () => {
+    const open = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!open));
+    nav.classList.toggle('is-open');
+  });
+</script>

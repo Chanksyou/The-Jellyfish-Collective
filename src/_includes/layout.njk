@@ -18,19 +18,7 @@
 </head>
 <body>
 
-<header class="masthead">
-  <a class="wordmark" href="/">
-    <span class="wordmark__jelly">Jellyfish</span>
-    <span class="wordmark__collective">Collective</span>
-  </a>
-  <nav aria-label="Primary">
-    <a href="/how-it-works/">How it works</a>
-    <a href="/activations/past/">Activations</a>
-    <a href="/technical/">How we build</a>
-    <a href="/members/">Members</a>
-    <a href="/join/">Join</a>
-  </nav>
-</header>
+{% include "navbar.njk" %}
 
 {% if page.url == "/" %}
 <div class="hero" aria-hidden="true">
