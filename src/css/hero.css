@@ -1,0 +1,98 @@
+/* ==========================================================================
+   HERO — photo with text overlay
+   ========================================================================== */
+
+.hero {
+  position: relative;
+  padding-top: 12.5vh;
+  min-height: 75vh;
+}
+
+/* Fixed width so the card doesn't shrink on smaller screens.
+   max-width: 100% stops it overflowing when narrower than 28rem. */
+.hero__text {
+  position: relative;
+  z-index: 2;
+  width: 28rem;
+  max-width: 100%;
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 10%;
+  padding: clamp(2rem, 4vw, 4rem) var(--gutter);
+}
+
+/* Photo always sits behind the text at every screen size */
+.hero__photo {
+  position: absolute;
+  left: 12.5%;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+  overflow: hidden;
+}
+
+/* Top/bottom fade overlay — uses the background colour so it blends seamlessly */
+.hero__photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    var(--abyss) 0%,
+    transparent 10%,
+    transparent 90%,
+    var(--abyss) 100%
+  );
+}
+
+.hero__photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  mask-image: linear-gradient(to right, transparent 0%, black 35%);
+}
+
+/* On small screens: remove margin, image fills full width behind text */
+@media (max-width: 50rem) {
+  .hero {
+    padding-top: 4vh;
+    min-height: auto;
+  }
+  .hero__text {
+    margin-left: 0;
+    min-height: auto;
+    border-radius: 0.25rem;
+  }
+  .hero__text .lede {
+    color: var(--foam);
+  }
+  .hero__photo {
+    left: 0;
+  }
+}
+
+/* "Join us" call-to-action button */
+.cta-btn {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.6rem 1.2rem;
+  border: 1px solid var(--bell);
+  color: var(--bell);
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  transition:
+    background 0.18s,
+    color 0.18s;
+}
+.cta-btn:hover {
+  background: var(--bell);
+  color: var(--abyss);
+}
