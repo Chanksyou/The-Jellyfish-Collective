@@ -52,9 +52,9 @@ In every volunteer group on earth, a handful of people quietly carry an
 enormous share of the weight and then burn out because nobody saw it.
 
 So we count it. Build day, strike day, shifts worked, truck driving, leading
-a team, hauling boxes at six in the morning. At the end of the cycle a pool
-of camp money gets divided across the credits earned, and a real chunk of
-your dues comes back based on what you actually did.
+a team, and troubleshooting the problems no one else could figure out. At the
+end of the cycle a pool of camp money gets divided across the credits earned,
+and a real chunk of your dues comes back based on what you actually did.
 
 Nobody is fined and nobody is shamed. It just means the person who drove the
 truck through the night does not have to wonder whether anyone noticed.
