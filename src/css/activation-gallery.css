@@ -1,0 +1,107 @@
+/*
+   Grid layout:
+     col 1 (2fr)  | col 2 (1fr) | col 3 (1fr)
+     ─────────────┼─────────────┼─────────────
+     featured     │  small 1    │  small 2
+     (spans both  │─────────────┼─────────────
+      rows)       │  small 3    │  CTA card
+*/
+.activation-gallery {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  aspect-ratio: 3 / 1; /* height = width ÷ 3, adjust to taste */
+  gap: 0.35rem;
+  margin: 1.25rem 0 0;
+}
+
+.activation-gallery figure {
+  margin: 0;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  min-height: 0;
+  min-width: 0; /* same fix for width — prevents intrinsic image width
+                   from pushing grid columns wider than the fr units allow */
+}
+
+.photo-featured {
+  grid-column: 1;
+  grid-row: 1 / 3;
+  overflow: hidden;
+  min-width: 0;
+  object-position: center center;
+}
+
+.activation-gallery img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  border: none;
+}
+
+.photo-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 1rem;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 0.5rem;
+  min-height: 0;
+  background: linear-gradient(
+    145deg,
+    rgba(95, 227, 200, 0.08) 0%,
+    rgba(176, 124, 255, 0.2) 100%
+  );
+  border: 1px solid rgba(95, 227, 200, 0.15);
+  transition: background 0.2s;
+}
+.photo-cta:hover {
+  background: linear-gradient(
+    145deg,
+    rgba(95, 227, 200, 0.16) 0%,
+    rgba(176, 124, 255, 0.32) 100%
+  );
+}
+
+.photo-cta__label {
+  font-family: var(--display);
+  font-weight: 300;
+  font-size: 1rem;
+  color: var(--foam);
+  line-height: 1.3;
+}
+
+.photo-cta__arrow {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  color: var(--bell);
+}
+
+/* Slim variant: 2 columns for activations with fewer photos */
+.activation-gallery--slim {
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  aspect-ratio: 2 / 1;
+}
+.activation-gallery--slim .photo-featured {
+  grid-row: 1 / 4;
+}
+
+/* Mobile: featured spans full width as a banner, smalls stack below */
+@media (max-width: 50rem) {
+  .activation-gallery {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    aspect-ratio: 1 / 1;
+  }
+  .photo-featured {
+    grid-column: 1 / 3;
+    grid-row: 1;
+  }
+}

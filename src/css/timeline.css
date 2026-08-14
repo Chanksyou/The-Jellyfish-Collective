@@ -1,0 +1,179 @@
+/* ==========================================================================
+   TIMELINE GRID — two-column layout with sticky sidebar
+   ========================================================================== */
+
+.timeline-wrap {
+  display: grid;
+  grid-template-columns: 1fr 13rem;
+  gap: 0 3rem;
+  padding: 0 var(--gutter) 6rem;
+  align-items: start;
+}
+
+/* Prevents the left column blowing out the grid on narrow viewports */
+.timeline-main {
+  min-width: 0;
+}
+
+@media (max-width: 50rem) {
+  .timeline-wrap {
+    grid-template-columns: 1fr;
+  }
+  .timeline-sidebar {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+   SIDEBAR
+   ========================================================================== */
+
+.timeline-sidebar {
+  position: sticky;
+  top: 5.5rem;
+  padding-top: clamp(1rem, 3vw, 2rem);
+}
+
+.timeline-nav__label {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--drift);
+  opacity: 0.6;
+  margin: 0 0 1rem;
+}
+
+.timeline-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-left: 1px solid rgba(95, 227, 200, 0.18);
+}
+
+.timeline-item {
+  position: relative;
+  padding: 0.45rem 0 0.45rem 1.1rem;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -3px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(141, 162, 181, 0.4);
+  transition: background 0.2s;
+}
+
+.timeline-item.is-active::before {
+  background: var(--bell);
+}
+
+.timeline-item a {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  text-decoration: none;
+  color: var(--drift);
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  line-height: 1.25;
+  transition: color 0.18s;
+}
+
+.timeline-item a:hover,
+.timeline-item.is-active a {
+  color: var(--bell);
+}
+
+.timeline-event {
+  font-weight: 500;
+}
+
+.timeline-date {
+  font-size: 0.62rem;
+  opacity: 0.6;
+}
+
+/* ==========================================================================
+   ACTIVATION SECTIONS
+   ========================================================================== */
+
+.activation-section {
+  padding: clamp(2rem, 5vw, 3.5rem) 0;
+  border-bottom: 1px solid rgba(95, 227, 200, 0.08);
+}
+
+.activation-section:first-child {
+  padding-top: clamp(1rem, 3vw, 2rem);
+}
+
+.activation-header {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.5rem;
+}
+
+.activation-name {
+  font-family: var(--display);
+  font-weight: 300;
+  font-size: clamp(1.75rem, 4vw, 2.4rem);
+  color: var(--bell);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+}
+
+.activation-year {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  color: var(--tendril);
+  text-transform: uppercase;
+}
+
+.activation-meta {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  color: var(--drift);
+  margin: 0 0 1.25rem;
+}
+
+.activation-desc {
+  font-size: 0.95rem;
+  color: var(--drift);
+  max-width: 38rem;
+  margin: 0 0 1.5rem;
+  line-height: 1.6;
+}
+
+.activation-link {
+  display: inline-block;
+  margin-top: 1rem;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  color: var(--tendril);
+  text-decoration: none;
+  transition: color 0.18s;
+}
+.activation-link:hover {
+  color: var(--bell);
+}
+
+.gallery-empty {
+  border: 1px dashed rgba(95, 227, 200, 0.15);
+  padding: 2.5rem;
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(141, 162, 181, 0.3);
+}

@@ -10,7 +10,6 @@
   align-items: center;
   padding: clamp(4rem, 10vh, 8rem) var(--gutter);
   overflow: hidden;
-  border-bottom: 1px solid rgba(95, 227, 200, 0.08);
 }
 
 /* ── Text ─────────────────────────────────────────────────────────────── */
@@ -85,6 +84,136 @@
     linear-gradient(to bottom, var(--abyss) 0%, transparent 10%),
     linear-gradient(to top, var(--abyss) 0%, transparent 10%),
     linear-gradient(to right, var(--abyss) 0%, transparent 30%);
+}
+
+/* ==========================================================================
+   MOSAIC — 3×2 checkerboard of images and text cards
+   ========================================================================== */
+
+.mosaic {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr 1fr;
+  gap: 1rem;
+  height: 80vh;
+  background: var(--abyss);
+}
+
+.mosaic__cell {
+  overflow: hidden;
+  position: relative;
+}
+
+/* Image cells — image scaled up so it bleeds past its own edges */
+.mosaic__cell--img img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1.12);
+}
+
+/* All-sides fade: image dissolves into --abyss on every edge,
+   making adjacent cells read as one continuous field */
+.mosaic__cell--img::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(to bottom, var(--abyss) 0%, transparent 18%),
+    linear-gradient(to top, var(--abyss) 0%, transparent 18%),
+    linear-gradient(to right, var(--abyss) 0%, transparent 18%),
+    linear-gradient(to left, var(--abyss) 0%, transparent 18%);
+}
+
+/* Text cards */
+.mosaic__cell--text {
+  background: var(--abyss);
+  padding: clamp(1.25rem, 2.5vw, 2.5rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 0.6rem;
+}
+
+.mosaic__label {
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--tendril);
+  margin: 0;
+}
+
+.mosaic__body {
+  font-size: clamp(0.95rem, 1.3vw, 1.05rem);
+  color: var(--drift);
+  line-height: 1.6;
+  margin: 0;
+  max-width: 22rem;
+}
+
+/* CTA card */
+.mosaic__cell--cta {
+  background: var(--abyss);
+  padding: clamp(1.25rem, 2.5vw, 2.5rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 1.5rem;
+}
+
+.mosaic__aside {
+  font-family: var(--display);
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+  color: var(--drift);
+  line-height: 1.35;
+  margin: 0;
+  max-width: 18rem;
+}
+
+.mosaic__cta-link {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  color: var(--bell);
+  text-decoration: none;
+  border: 1px solid var(--bell);
+  padding: 0.55rem 1.1rem;
+  transition:
+    background 0.18s,
+    color 0.18s;
+}
+
+.mosaic__cta-link:hover {
+  background: var(--bell);
+  color: var(--abyss);
+}
+
+@media (max-width: 50rem) {
+  .mosaic {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: none;
+    height: auto;
+  }
+
+  .mosaic__cell--img {
+    min-height: 44vw;
+  }
+
+  .mosaic__cell--text,
+  .mosaic__cell--cta {
+    min-height: 44vw;
+  }
 }
 
 /* ── Mobile: image stays behind, spans full width, scrim gets stronger ── */

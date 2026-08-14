@@ -1,0 +1,29 @@
+/* Grid of key facts shown at the top of each activation page */
+.setup-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0 2.5rem;
+}
+
+.setup-item {
+  padding: 0.9rem 1rem;
+  border: 1px solid rgba(95, 227, 200, 0.12);
+  background: rgba(12, 26, 43, 0.5);
+}
+
+.setup-item__label {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--tendril);
+  margin: 0 0 0.35rem;
+}
+
+.setup-item__value {
+  font-size: 0.9rem;
+  color: var(--foam);
+  margin: 0;
+  line-height: 1.5;
+}
