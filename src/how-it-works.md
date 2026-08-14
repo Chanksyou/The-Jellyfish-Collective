@@ -26,8 +26,7 @@ logistics, music booking, and more. Anyone who would rather build one
 specific thing can take a project instead: an art car, a structure, or an
 activation nobody asked for.
 
-Show up with an idea or energy to give and you are already one of us. There
-is no application, no vote, no waiting period.
+Show up with an idea or energy to give and you are already one of us.
 
 ---
 
