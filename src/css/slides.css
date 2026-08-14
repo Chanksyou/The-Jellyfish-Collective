@@ -125,7 +125,7 @@
     linear-gradient(to left, var(--abyss) 0%, transparent 30%);
 }
 
-@media (max-width: 50rem) {
+@media (max-width: 55rem) {
   .slide--flip .slide__visual {
     left: 0; /* already full width on mobile */
   }
@@ -300,7 +300,7 @@
   color: var(--abyss);
 }
 
-@media (max-width: 50rem) {
+@media (max-width: 55rem) {
   .mosaic {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: none;
@@ -319,7 +319,7 @@
 
 /* ── Mobile: image stays behind, spans full width, scrim gets stronger ── */
 
-@media (max-width: 50rem) {
+@media (max-width: 55rem) {
   .slide__text {
     width: 100%;
   }

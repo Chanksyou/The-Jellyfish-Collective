@@ -59,7 +59,7 @@
 }
 
 /* On small screens: remove margin, image fills full width behind text */
-@media (max-width: 50rem) {
+@media (max-width: 55rem) {
   .hero {
     padding-top: 4vh;
     min-height: auto;

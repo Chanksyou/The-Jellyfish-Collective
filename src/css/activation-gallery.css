@@ -94,7 +94,7 @@
 }
 
 /* Mobile: featured spans full width as a banner, smalls stack below */
-@media (max-width: 50rem) {
+@media (max-width: 55rem) {
   .activation-gallery {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;

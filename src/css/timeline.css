@@ -15,7 +15,7 @@
   min-width: 0;
 }
 
-@media (max-width: 50rem) {
+@media (max-width: 55rem) {
   .timeline-wrap {
     grid-template-columns: 1fr;
   }
