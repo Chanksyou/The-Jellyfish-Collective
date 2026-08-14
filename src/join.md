@@ -4,17 +4,17 @@ title: Join
 tagline: How to end up building a jellyfish with us.
 ---
 
-## There's no application
+## No application, but not automatic
 
-The collective is open to anyone contributing ideas or energy. There's no
-membership fee, no vetting committee, and no waiting list. Most people arrive
-because they know someone, or because they wandered into the lounge at 3am and
-came back the next day to ask how it got there.
+There's no paperwork, no membership fee, and no waiting list. But joining
+isn't automatic either: every new member needs to be vouched for by a few
+current jellies, or sit down with us for a short conversation, so we can
+make sure you understand what you're signing up for and that it's a good fit
+on both sides.
 
-The honest ask is this: **it takes a minimum of twelve core members to
-activate at all.** Below that, the build doesn't happen. So when you join a
-deployment, you're not an attendee with a wristband — you're part of the
-reason it exists.
+Most people arrive because they know someone, or because they wandered into
+the lounge at 3am and came back the next day to ask how it got there. From
+there, a vouch or a conversation is what turns showing up into joining.
 
 ---
 
