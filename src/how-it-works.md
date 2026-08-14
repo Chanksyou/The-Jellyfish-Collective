@@ -1,7 +1,7 @@
 ---
 layout: layout.njk
 title: How It Works
-tagline: Governance, dues, roles, and what's expected of you.
+tagline: Org Structure, Finances, and Roles
 ---
 
 A jellyfish has no brain, no heart, and no spine. It has outlived five mass
