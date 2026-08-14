@@ -66,5 +66,3 @@ truck through the night does not have to wonder whether anyone noticed.
 If you are thinking about camping with us, fair warning: this is a
 participation camp, not a hotel. Everyone builds, everyone takes a shift,
 everyone helps tear down. That is the whole deal, and it is why it works.
-
-We drift. We do not sink.
