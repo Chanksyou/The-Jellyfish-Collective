@@ -1,0 +1,114 @@
+/* ==========================================================================
+   SLIDE — text on the left, image anchored to the right and behind it.
+   Text overlaps the image; fades blend the image into the page.
+   ========================================================================== */
+
+.slide {
+  position: relative;
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  padding: clamp(4rem, 10vh, 8rem) var(--gutter);
+  overflow: hidden;
+  border-bottom: 1px solid rgba(95, 227, 200, 0.08);
+}
+
+/* ── Text ─────────────────────────────────────────────────────────────── */
+
+.slide__text {
+  position: relative;
+  z-index: 2; /* in front of the image */
+  width: min(40rem, 60%);
+}
+
+/* Stacked display headlines */
+.slide__headline {
+  font-family: var(--display);
+  font-weight: 300;
+  font-size: clamp(3.25rem, 7.5vw, 6rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--foam);
+  margin: 0;
+}
+
+/* Body copy below the headlines */
+.slide__text p:not(.slide__headline) {
+  font-size: 1.1rem;
+  color: var(--drift);
+  line-height: 1.65;
+  margin: 0 0 1rem;
+  max-width: 30rem;
+}
+
+/* Gap after the last headline, before body copy — only targets the headline
+   immediately followed by a non-headline paragraph */
+.slide__headline:has(+ p:not(.slide__headline)) {
+  margin-bottom: 3rem;
+}
+
+.slide__text strong {
+  color: var(--bell-hot);
+  font-weight: 600;
+}
+
+/* ── Image ────────────────────────────────────────────────────────────── */
+
+/* Fills the right portion of the slide, behind the text */
+.slide__visual {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 65%; /* overlaps into the text area — text sits in front via z-index */
+  z-index: 1;
+}
+
+.slide__visual img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+/* Fades:
+   - top/bottom: 10% into the image so it bleeds into the page
+   - left: 35% so the image dissolves where the text overlaps it
+   All use --abyss so they match the page background exactly. */
+.slide__visual::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(to bottom, var(--abyss) 0%, transparent 10%),
+    linear-gradient(to top, var(--abyss) 0%, transparent 10%),
+    linear-gradient(to right, var(--abyss) 0%, transparent 30%);
+}
+
+/* ── Mobile: image stays behind, spans full width, scrim gets stronger ── */
+
+@media (max-width: 50rem) {
+  .slide__text {
+    width: 100%;
+  }
+
+  .slide__headline {
+    font-size: clamp(2.5rem, 9vw, 4rem);
+  }
+
+  /* Image fills the full slide on mobile — no side-by-side, still behind */
+  .slide__visual {
+    width: 100%;
+    left: 0;
+  }
+
+  /* Stronger left fade on mobile so full-width image doesn't wash out text */
+  .slide__visual::after {
+    background:
+      linear-gradient(to bottom, var(--abyss) 0%, transparent 10%),
+      linear-gradient(to top, var(--abyss) 0%, transparent 10%),
+      linear-gradient(to right, var(--abyss) 0%, transparent 60%);
+  }
+}

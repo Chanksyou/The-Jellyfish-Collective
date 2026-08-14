@@ -1,4 +1,5 @@
 @import "hero.css";
+@import "slides.css";
 
 /* ==========================================================================
    PALETTE — swap these six values to match the deck exactly.
@@ -6,7 +7,7 @@
    ========================================================================== */
 :root {
   --abyss: #060b14; /* page ground — deep ocean, not black */
-  --deep: #0c1a2b; /* raised surfaces, rules */
+  --deep: #0c1a2b; /* raised surfacWe will only estimate media storage here.es, rules */
   --bell: #5fe3c8; /* bioluminescent cyan-green — the bell */
   --bell-hot: #a8ffee; /* the brightest point of the glow */
   --tendril: #b07cff; /* violet — tendrils, secondary accent */

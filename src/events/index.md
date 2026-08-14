@@ -1,11 +1,9 @@
 ---
 layout: layout.njk
-title: Past Activations
+title: Events
 tagline: Everywhere the jellyfish has washed up so far.
 ---
 
-<!-- FORMAT NOTE: keep every entry in this exact shape. Moving an activation
-     from upcoming.md to this file should be copy-paste, not a rewrite. -->
 
 ## Elements 2026
 
