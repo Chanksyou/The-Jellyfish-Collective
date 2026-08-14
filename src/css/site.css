@@ -366,13 +366,22 @@ blockquote {
 .footer nav a:hover {
   color: var(--bell);
 }
+.footer__social-link {
+  color: var(--drift);
+  display: flex;
+  align-items: center;
+  transition: color 0.18s;
+}
+.footer__social-link:hover {
+  color: var(--bell);
+}
 .footer__note {
   font-family: var(--mono);
   font-size: 0.7rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: rgba(141, 162, 181, 0.5);
-  margin: 2rem 0 0;
+  margin: 1.5rem 0 0;
 }
 
 /* ==========================================================================

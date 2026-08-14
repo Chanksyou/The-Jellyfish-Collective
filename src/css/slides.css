@@ -51,6 +51,22 @@
   font-weight: 600;
 }
 
+/* Button + secondary link sitting side by side */
+.slide__actions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+.slide__link {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  color: var(--drift);
+}
+
 /* Display h2 inside a slide — same weight as the stacked headlines */
 .slide__heading {
   font-family: var(--display);
@@ -105,8 +121,8 @@
 .slide--flip .slide__visual::after {
   background:
     linear-gradient(to bottom, var(--abyss) 0%, transparent 10%),
-    linear-gradient(to top,    var(--abyss) 0%, transparent 10%),
-    linear-gradient(to left,   var(--abyss) 0%, transparent 30%);
+    linear-gradient(to top, var(--abyss) 0%, transparent 10%),
+    linear-gradient(to left, var(--abyss) 0%, transparent 30%);
 }
 
 @media (max-width: 50rem) {
@@ -121,8 +137,8 @@
   .slide--flip .slide__visual::after {
     background:
       linear-gradient(to bottom, var(--abyss) 0%, transparent 10%),
-      linear-gradient(to top,    var(--abyss) 0%, transparent 10%),
-      linear-gradient(to right,  var(--abyss) 0%, transparent 60%);
+      linear-gradient(to top, var(--abyss) 0%, transparent 10%),
+      linear-gradient(to right, var(--abyss) 0%, transparent 60%);
   }
 }
 
@@ -144,6 +160,16 @@
   height: 100%;
   object-fit: cover;
   object-position: center center;
+}
+
+/* Smaller, left-center cropped image — good for portrait group shots */
+.slide__visual--contained {
+  width: 70%;
+}
+
+.slide__visual--contained img {
+  object-position: right center;
+  transform: scaleX(-1);
 }
 
 /* Fades:
