@@ -108,43 +108,45 @@
   object-position: right center;
 }
 
+/* Image moves left, so its fade flips to the right edge */
 .slide--flip .slide__visual {
   left: 0;
   right: auto;
+  --fade-in: linear-gradient(to left, transparent 0%, #000 30%);
 }
 
 .slide--flip .slide__text {
   margin-left: auto;
 }
 
-/* Flip the left fade to a right fade since the image is now on the left */
-.slide--flip .slide__visual::after {
-  background:
-    linear-gradient(to bottom, var(--abyss) 0%, transparent 10%),
-    linear-gradient(to top, var(--abyss) 0%, transparent 10%),
-    linear-gradient(to left, var(--abyss) 0%, transparent 30%);
-}
-
 @media (max-width: 55rem) {
   .slide--flip .slide__visual {
     left: 0; /* already full width on mobile */
+
+    /* Full width again, so the fade goes back to covering the text side */
+    --fade-in: linear-gradient(to right, transparent 0%, #000 60%);
   }
 
   .slide--flip .slide__text {
     margin-left: 0;
   }
-
-  .slide--flip .slide__visual::after {
-    background:
-      linear-gradient(to bottom, var(--abyss) 0%, transparent 10%),
-      linear-gradient(to top, var(--abyss) 0%, transparent 10%),
-      linear-gradient(to right, var(--abyss) 0%, transparent 60%);
-  }
 }
 
 /* ── Image ────────────────────────────────────────────────────────────── */
 
-/* Fills the right portion of the slide, behind the text */
+/* Fills the right portion of the slide, behind the text.
+
+   Fades:
+   - --fade-in:   the inner edge, so the image dissolves where the text overlaps
+   - --fade-ends: top and bottom, so it bleeds into the page
+
+   Both are masks, not overlays: they fade the image's own pixels to
+   transparent instead of painting --abyss over them. An overlay only matches
+   the page where the page is exactly --abyss, and the ambient glow in
+   body::before tints the ground around it — so an overlay leaves a visible
+   seam at the image's edge. A mask has nothing to mismatch. It sits on the
+   container rather than the img so image transforms (see --contained) don't
+   flip it. */
 .slide__visual {
   position: absolute;
   right: 0;
@@ -152,6 +154,19 @@
   bottom: 0;
   width: 65%; /* overlaps into the text area — text sits in front via z-index */
   z-index: 1;
+
+  --fade-in: linear-gradient(to right, transparent 0%, #000 30%);
+  --fade-ends: linear-gradient(
+    to bottom,
+    transparent 0%,
+    #000 10%,
+    #000 90%,
+    transparent 100%
+  );
+  -webkit-mask-image: var(--fade-in), var(--fade-ends);
+  -webkit-mask-composite: source-in;
+  mask-image: var(--fade-in), var(--fade-ends);
+  mask-composite: intersect;
 }
 
 .slide__visual img {
@@ -172,32 +187,19 @@
   transform: scaleX(-1);
 }
 
-/* Fades:
-   - top/bottom: 10% into the image so it bleeds into the page
-   - left: 35% so the image dissolves where the text overlaps it
-   All use --abyss so they match the page background exactly. */
-.slide__visual::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    linear-gradient(to bottom, var(--abyss) 0%, transparent 10%),
-    linear-gradient(to top, var(--abyss) 0%, transparent 10%),
-    linear-gradient(to right, var(--abyss) 0%, transparent 30%);
-}
-
 /* ==========================================================================
    MOSAIC — 3×2 checkerboard of images and text cards
    ========================================================================== */
 
+/* No background of its own — the grid gaps and the text cards let the page
+   ground (and the ambient glow over it) through, so the section doesn't read
+   as a darker rectangle sitting on the page. */
 .mosaic {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 1fr 1fr;
   gap: 1rem;
   height: 80vh;
-  background: var(--abyss);
 }
 
 .mosaic__cell {
@@ -215,23 +217,34 @@
   transform: scale(1.12);
 }
 
-/* All-sides fade: image dissolves into --abyss on every edge,
-   making adjacent cells read as one continuous field */
-.mosaic__cell--img::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    linear-gradient(to bottom, var(--abyss) 0%, transparent 18%),
-    linear-gradient(to top, var(--abyss) 0%, transparent 18%),
-    linear-gradient(to right, var(--abyss) 0%, transparent 18%),
-    linear-gradient(to left, var(--abyss) 0%, transparent 18%);
+/* All-sides fade, so adjacent cells read as one continuous field.
+   A mask, not an --abyss overlay: it fades the image's own pixels to
+   transparent so the page shows through, instead of painting a flat colour
+   that only matches where the ambient glow doesn't reach. On the cell rather
+   than the img so the scale(1.12) above doesn't enlarge the fade with it. */
+.mosaic__cell--img {
+  --fade-x: linear-gradient(
+    to right,
+    transparent 0%,
+    #000 18%,
+    #000 82%,
+    transparent 100%
+  );
+  --fade-y: linear-gradient(
+    to bottom,
+    transparent 0%,
+    #000 18%,
+    #000 82%,
+    transparent 100%
+  );
+  -webkit-mask-image: var(--fade-x), var(--fade-y);
+  -webkit-mask-composite: source-in;
+  mask-image: var(--fade-x), var(--fade-y);
+  mask-composite: intersect;
 }
 
 /* Text cards */
 .mosaic__cell--text {
-  background: var(--abyss);
   padding: clamp(1.25rem, 2.5vw, 2.5rem);
   display: flex;
   flex-direction: column;
@@ -260,7 +273,6 @@
 
 /* CTA card */
 .mosaic__cell--cta {
-  background: var(--abyss);
   padding: clamp(1.25rem, 2.5vw, 2.5rem);
   display: flex;
   flex-direction: column;
@@ -328,17 +340,11 @@
     font-size: clamp(2.5rem, 9vw, 4rem);
   }
 
-  /* Image fills the full slide on mobile — no side-by-side, still behind */
+  /* Image fills the full slide on mobile — no side-by-side, still behind.
+     Stronger left fade so the full-width image doesn't wash out the text. */
   .slide__visual {
     width: 100%;
     left: 0;
-  }
-
-  /* Stronger left fade on mobile so full-width image doesn't wash out text */
-  .slide__visual::after {
-    background:
-      linear-gradient(to bottom, var(--abyss) 0%, transparent 10%),
-      linear-gradient(to top, var(--abyss) 0%, transparent 10%),
-      linear-gradient(to right, var(--abyss) 0%, transparent 60%);
+    --fade-in: linear-gradient(to right, transparent 0%, #000 60%);
   }
 }

@@ -23,7 +23,15 @@
   padding: clamp(2rem, 4vw, 4rem) var(--gutter);
 }
 
-/* Photo always sits behind the text at every screen size */
+/* Photo always sits behind the text at every screen size.
+
+   Every open edge fades the photo's own pixels to transparent (a mask) rather
+   than painting --abyss on top of them. An overlay only matches the page where
+   the page is exactly --abyss, and body::before tints the ground with an
+   ambient glow — so an overlay ends in a hard seam at the photo's edge. A mask
+   lets whatever is behind show through, so there is nothing to mismatch.
+   The mask lives on the container, not the img, so it is unaffected by any
+   transform on the image itself. */
 .hero__photo {
   position: absolute;
   left: 12.5%;
@@ -32,21 +40,19 @@
   right: 0;
   z-index: 1;
   overflow: hidden;
-}
 
-/* Top/bottom fade overlay — uses the background colour so it blends seamlessly */
-.hero__photo::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: linear-gradient(
+  --fade-in: linear-gradient(to right, transparent 0%, #000 35%);
+  --fade-ends: linear-gradient(
     to bottom,
-    var(--abyss) 0%,
-    transparent 10%,
-    transparent 90%,
-    var(--abyss) 100%
+    transparent 0%,
+    #000 10%,
+    #000 90%,
+    transparent 100%
   );
+  -webkit-mask-image: var(--fade-in), var(--fade-ends);
+  -webkit-mask-composite: source-in;
+  mask-image: var(--fade-in), var(--fade-ends);
+  mask-composite: intersect;
 }
 
 .hero__photo img {
@@ -55,7 +61,6 @@
   height: 100%;
   object-fit: cover;
   object-position: center center;
-  mask-image: linear-gradient(to right, transparent 0%, black 35%);
 }
 
 /* On small screens: remove margin, image fills full width behind text */
