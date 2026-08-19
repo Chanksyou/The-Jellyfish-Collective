@@ -28,7 +28,7 @@
   line-height: 1;
   letter-spacing: -0.03em;
   color: var(--foam);
-  margin: 0;
+  margin: 0; 
 }
 
 /* Body copy below the headlines */
