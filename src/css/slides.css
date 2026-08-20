@@ -1,26 +1,44 @@
 /* ==========================================================================
-   SLIDE — text on the left, image anchored to the right and behind it.
-   Text overlaps the image; fades blend the image into the page.
+   SLIDE — text and image side by side: text left, image right.
+
+   Two flex columns, each carrying a minimum width. While both minimums fit
+   on one line the slide reads as two columns; the moment they do not, the
+   flex line wraps and the pair stacks — text first, image beneath it.
+
+   Nothing here is pinned to a breakpoint. The wrap is driven by the columns'
+   own widths, so a slide reflows wherever it actually runs out of room rather
+   than at a viewport size guessed in advance.
    ========================================================================== */
 
 .slide {
-  position: relative;
-  min-height: 85vh;
+  /* The whole layout is sized from these two. The text column is the one that
+     matters: lower --slide-text-min and the slide holds two columns down to a
+     narrower screen before it stacks. */
+  --slide-text-min: 24rem;
+  --slide-visual-min: 20rem;
+
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
+  gap: clamp(2rem, 5vw, 4.5rem);
+  min-height: 85vh;
   padding: clamp(4rem, 10vh, 8rem) var(--gutter);
   overflow: hidden;
 }
 
 /* ── Text ─────────────────────────────────────────────────────────────── */
 
+/* Grows to share the row, never narrower than its minimum, never wider than a
+   comfortable measure. The min() guard lets the column give up that minimum on
+   a screen narrower than the minimum itself — that is what keeps a 360px phone
+   from scrolling sideways. */
 .slide__text {
-  position: relative;
-  z-index: 2; /* in front of the image */
-  width: min(40rem, 60%);
+  flex: 1 1 var(--slide-text-min);
+  min-width: min(var(--slide-text-min), 100%);
+  max-width: 40rem;
 }
 
-/* Stacked display headlines */
+/* Stacked display headlines *//* Stacked display headlines */
 .slide__headline {
   font-family: var(--display);
   font-weight: 300;
@@ -103,69 +121,57 @@
   color: var(--tendril);
 }
 
-/* Flipped variant — image on the left, text on the right */
-.slide--flip .slide__visual img {
-  object-position: right center;
-}
-
-/* Image moves left, so its fade flips to the right edge */
-.slide--flip .slide__visual {
-  left: 0;
-  right: auto;
-  --fade-in: linear-gradient(to left, transparent 0%, #000 30%);
-}
-
-.slide--flip .slide__text {
-  margin-left: auto;
-}
-
-@media (max-width: 55rem) {
-  .slide--flip .slide__visual {
-    left: 0; /* already full width on mobile */
-
-    /* Full width again, so the fade goes back to covering the text side */
-    --fade-in: linear-gradient(to right, transparent 0%, #000 60%);
-  }
-
-  .slide--flip .slide__text {
-    margin-left: 0;
-  }
+/* Flipped variant — image on the left, text on the right. Only the row
+   direction changes; the DOM keeps the text first, so when the slide stacks
+   the text still lands on top and the reading order holds. */
+.slide--flip {
+  flex-direction: row-reverse;
 }
 
 /* ── Image ────────────────────────────────────────────────────────────── */
 
-/* Fills the right portion of the slide, behind the text.
+/* The other column. Stretches to the text's height when the text is the taller
+   of the two, and holds a minimum of its own when it is not.
 
-   Fades:
-   - --fade-in:   the inner edge, so the image dissolves where the text overlaps
-   - --fade-ends: top and bottom, so it bleeds into the page
-
-   Both are masks, not overlays: they fade the image's own pixels to
+   The fades are masks, not overlays: they fade the image's own pixels to
    transparent instead of painting --abyss over them. An overlay only matches
    the page where the page is exactly --abyss, and the ambient glow in
    body::before tints the ground around it — so an overlay leaves a visible
    seam at the image's edge. A mask has nothing to mismatch. It sits on the
-   container rather than the img so image transforms (see --contained) don't
-   flip it. */
-.slide__visual {
-  position: absolute;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  width: 65%; /* overlaps into the text area — text sits in front via z-index */
-  z-index: 1;
+   container rather than the img so image transforms (see --contained) do not
+   flip it.
 
-  --fade-in: linear-gradient(to right, transparent 0%, #000 30%);
+   Both fades are symmetric, which is what lets the layout stay free of
+   breakpoints: one mask reads correctly with the image on the right, on the
+   left, or full width beneath the text. */
+.slide__visual {
+  flex: 1 1 var(--slide-visual-min);
+  min-width: min(var(--slide-visual-min), 100%);
+  align-self: stretch;
+  min-height: min(60vh, 30rem);
+
+  /* Grid so the img fills the column at whatever height the flex row resolves
+     to — a percentage height needs a definite parent, and a stretched flex
+     item is not one until after layout. */
+  display: grid;
+
+  --fade-sides: linear-gradient(
+    to right,
+    transparent 0%,
+    #000 7%,
+    #000 93%,
+    transparent 100%
+  );
   --fade-ends: linear-gradient(
     to bottom,
     transparent 0%,
-    #000 10%,
-    #000 90%,
+    #000 7%,
+    #000 93%,
     transparent 100%
   );
-  -webkit-mask-image: var(--fade-in), var(--fade-ends);
+  -webkit-mask-image: var(--fade-sides), var(--fade-ends);
   -webkit-mask-composite: source-in;
-  mask-image: var(--fade-in), var(--fade-ends);
+  mask-image: var(--fade-sides), var(--fade-ends);
   mask-composite: intersect;
 }
 
@@ -177,9 +183,10 @@
   object-position: center center;
 }
 
-/* Smaller, left-center cropped image — good for portrait group shots */
+/* Narrower column, mirrored — good for portrait group shots */
 .slide__visual--contained {
-  width: 70%;
+  --slide-visual-min: 17rem;
+  max-width: 32rem;
 }
 
 .slide__visual--contained img {
@@ -187,7 +194,7 @@
   transform: scaleX(-1);
 }
 
-/* ── Photo band ───────────────────────────────────────────────────────── */
+/* ── Photo band/* ── Photo band ───────────────────────────────────────────────────────── */
 
 /* A full-width photo between slides, carrying no text of its own. Same
    top-and-bottom mask as .slide__visual so it dissolves into the page instead
@@ -359,22 +366,13 @@
   }
 }
 
-/* ── Mobile: image stays behind, spans full width, scrim gets stronger ── */
+/* ── Mobile type ──────────────────────────────────────────────────────── */
+
+/* The slide layout needs no breakpoint of its own — it wraps when the columns
+   stop fitting. All that is left for a small screen is type size. */
 
 @media (max-width: 55rem) {
-  .slide__text {
-    width: 100%;
-  }
-
   .slide__headline {
     font-size: clamp(2.5rem, 9vw, 4rem);
-  }
-
-  /* Image fills the full slide on mobile — no side-by-side, still behind.
-     Stronger left fade so the full-width image doesn't wash out the text. */
-  .slide__visual {
-    width: 100%;
-    left: 0;
-    --fade-in: linear-gradient(to right, transparent 0%, #000 60%);
   }
 }
