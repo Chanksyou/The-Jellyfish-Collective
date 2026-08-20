@@ -187,6 +187,36 @@
   transform: scaleX(-1);
 }
 
+/* ── Photo band ───────────────────────────────────────────────────────── */
+
+/* A full-width photo between slides, carrying no text of its own. Same
+   top-and-bottom mask as .slide__visual so it dissolves into the page instead
+   of sitting on it as a hard-edged rectangle — no side fade, since there is
+   no text alongside it to clear. */
+.photo-band {
+  position: relative;
+  height: min(60vh, 34rem);
+  overflow: hidden;
+
+  --fade-ends: linear-gradient(
+    to bottom,
+    transparent 0%,
+    #000 12%,
+    #000 88%,
+    transparent 100%
+  );
+  -webkit-mask-image: var(--fade-ends);
+  mask-image: var(--fade-ends);
+}
+
+.photo-band img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 45%;
+}
+
 /* ==========================================================================
    MOSAIC — 3×2 checkerboard of images and text cards
    ========================================================================== */
