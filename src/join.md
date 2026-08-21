@@ -16,6 +16,12 @@ Most people arrive because they know someone, or because they wandered into
 the lounge at 3am and came back the next day to ask how it got there. From
 there, a vouch or a conversation is what turns showing up into joining.
 
+<figure>
+  <img src="/img/sign-2am.webp"
+       alt="A hand-lettered acrylic sign hanging at the lounge entrance at night, glowing under UV: The Jellyfish Collective, open 2am to 6am"
+       loading="lazy" width="1080" height="1350">
+</figure>
+
 ---
 
 ## What you're signing up for
@@ -44,3 +50,9 @@ and tell us a little about yourself — what you'd want to help with, and which
 event you're looking at.
 
 We'll point you at the current planning docs and the next meeting.
+
+<figure>
+  <img src="/img/stage-flag.webp"
+       alt="Two jellies on the deck in golden hour, one dancing and one holding the camp flag on a pole"
+       loading="lazy" width="1080" height="1320">
+</figure>
