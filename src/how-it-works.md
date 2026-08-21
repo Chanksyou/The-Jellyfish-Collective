@@ -28,6 +28,13 @@ activation nobody asked for.
 
 Show up with an idea or energy to give and you are already one of us.
 
+<figure>
+  <img src="/img/crew-shade-tent.webp"
+       alt="Jellies sprawled across blankets and air mattresses in the shade of the camp canopy"
+       loading="lazy" width="1080" height="866">
+  <figcaption>No head of the table, because there is no table</figcaption>
+</figure>
+
 ---
 
 ## How it's paid for
@@ -66,3 +73,10 @@ truck through the night does not have to wonder whether anyone noticed.
 If you are thinking about camping with us, fair warning: this is a
 participation camp, not a hotel. Everyone builds, everyone takes a shift,
 everyone helps tear down. That is the whole deal, and it is why it works.
+
+<figure>
+  <img src="/img/crew-van.webp"
+       alt="The crew lined up in front of the cargo van on the field, throwing peace signs"
+       loading="lazy" width="1080" height="1109">
+  <figcaption>Everybody who showed up, which is everybody</figcaption>
+</figure>
