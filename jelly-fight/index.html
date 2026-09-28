@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jelly Fight</title>
+  <style>
+    html, body { margin: 0; height: 100%; overflow: hidden; background: #111; font-family: system-ui, sans-serif; }
+    #app canvas { display: block; }
+    #hud {
+      position: fixed; left: 12px; bottom: 10px; color: #fff; font: 12px/1.4 ui-monospace, monospace;
+      text-shadow: 0 1px 2px #000; pointer-events: none;
+    }
+    #overlay {
+      position: fixed; inset: 0; display: grid; place-items: center; background: rgba(10, 12, 20, 0.55);
+      color: #fff; cursor: pointer; text-align: center;
+    }
+    #overlay[hidden] { display: none; }
+    #overlay h1 { margin: 0 0 8px; font-size: 42px; letter-spacing: 1px; }
+    #overlay p { margin: 4px 0; opacity: 0.85; }
+    kbd { background: #fff2; border: 1px solid #fff4; border-radius: 4px; padding: 1px 6px; font-size: 13px; }
+  </style>
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+<body>
+  <div id="app"></div>
+  <div id="hud"></div>
+  <div id="overlay">
+    <div>
+      <h1>Jelly Fight</h1>
+      <p>Click to play</p>
+      <p><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> move &nbsp; <kbd>Mouse</kbd> look &nbsp; <kbd>Space</kbd> jump &nbsp; <kbd>Shift</kbd> sprint</p>
+      <p><kbd>Wheel</kbd> zoom &nbsp; <kbd>R</kbd> respawn &nbsp; <kbd>Esc</kbd> pause</p>
+    </div>
+  </div>
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>
