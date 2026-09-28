@@ -1,4 +1,5 @@
-import * as THREE from 'three';
+// three.js r128 is loaded as a global by the apartment page
+const THREE = window.THREE;
 
 // Orbit camera that follows the player and pulls in when something is
 // between it and the player (so it never ends up inside a couch).

@@ -192,7 +192,7 @@ const DS=THREE.DoubleSide,H=2.75,PI=Math.PI;
 const $=s=>document.querySelector(s);
 const canvas=$('#c');
 const MOBILE=matchMedia('(pointer:coarse)').matches||Math.min(screen.width,screen.height)<700;
-const renderer=new THREE.WebGLRenderer({canvas,antialias:true,powerPreference:'high-performance',logarithmicDepthBuffer:true/*JELLY*/});
+const renderer=new THREE.WebGLRenderer({canvas,antialias:true,powerPreference:'high-performance'});
 renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,MOBILE?1.5:2));
 renderer.shadowMap.enabled=true;renderer.shadowMap.type=MOBILE?THREE.PCFShadowMap:THREE.PCFSoftShadowMap;renderer.shadowMap.autoUpdate=false;
 renderer.outputEncoding=THREE.sRGBEncoding;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.0;
@@ -2979,7 +2979,7 @@ window._life=(dt,now)=>{lifeT+=dt;perfStep(dt);
 let last=performance.now(),clkAcc=0,still=0,skip=0;const _lastCam=new THREE.Matrix4();
 function loop(now){const dt=Math.min(.05,(now-last)/1000);last=now;
  if(tween&&mode==='orbit'){let t=Math.min(1,(now-tween.start)/tween.dur);const e=t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;camera.position.lerpVectors(tween.p0,tween.p1,e);camera.position.y+=Math.sin(PI*e)*(tween.lift||0);controls.target.lerpVectors(tween.t0,tween.t1,e);if(t>=1)tween=null;}
- if(window.GAME&&GAME.active)GAME.step(dt)/*JELLY*/;else if(window._dcOn)window._dcStep(dt);else if(mode==='orbit')controls.update();else updateWalk(dt);
+ if(window._dcOn)window._dcStep(dt);else if(mode==='orbit')controls.update();else updateWalk(dt);
  updateHide();updateDims();
  if(window._clk&&window._clk.play){clkAcc+=dt*60;if(clkAcc>=2){const c=window._clk;c.mins=(c.mins+Math.floor(clkAcc))%1440;clkAcc%=1;document.getElementById('clockR').value=c.mins;window._applyClock();}}
  if(window._stepFall)window._stepFall(Math.min(dt,.05));if(window._halos)window._halos();if(window._life)window._life(dt,now);
@@ -3010,17 +3010,9 @@ requestAnimationFrame(loop);
  {const t0=window._treat;if(t0)window._treat=w=>{const r=t0(w);if(!r)done('treat');return r;};}
  $('#dcBtn').addEventListener('click',()=>setTimeout(()=>{if(window._dcOn)done('cam');},0));
  $('#clubBtn').addEventListener('click',()=>setTimeout(()=>{if(window._club&&window._club.on)done('party');},0));}
-
-// ---------- JELLY FIGHT hook: hands the scene to the game (src/main.js) ----------
-window.APT={scene,renderer,camera,controls,OUT,
- enterGame(){if(tour)endTour();if(arrange)setArrange(false);select(null);window._dcOn=false;mode='game';controls.enabled=false;tween=null;joy.hidden=true;},
- exitGame(){setMode('orbit');}};
 })();
 </script>
 </body>
 </html>
 
-<style>/* JELLY FIGHT */body.game>*:not(#c):not(#game-ui){display:none!important}</style>
-<script type="importmap">{"imports":{"three":"./src/three-global.js","three-mesh-bvh":"./vendor/three-mesh-bvh.module.js"}}</script>
-<script type="module" src="./src/main.js"></script>
 </body></html>
