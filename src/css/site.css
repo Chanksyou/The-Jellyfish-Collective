@@ -1,5 +1,8 @@
 @import "hero.css";
 @import "slides.css";
+@import "activation-detail.css";
+@import "activation-gallery.css";
+@import "media.css";
 
 /* ==========================================================================
    PALETTE — swap these six values to match the deck exactly.

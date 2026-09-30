@@ -1,5 +1,6 @@
 ---
-layout: layout.njk
+layout: event.njk
+slug: showcation-2026
 title: Showcation 2026
 tagline: The most fully realized version of the activation to date.
 wide: true
@@ -33,16 +34,14 @@ Also home to the Izakaya, a side project that ran alongside the main activation.
 
 ---
 
-## Site layout
-
-<!-- Add a floor plan image or written layout description here -->
-
----
+<!-- ## Site layout
+     Add a floor plan image or written layout description here, then
+     un-comment this heading. -->
 
 ## Photos
 
-<div class="gallery-empty">Photos coming soon — check <a href="https://www.instagram.com/the_jellyfish_collective">Instagram</a> in the meantime.</div>
+{% include "photo-grid.njk" %}
 
 ---
 
-← [Back to all activations](/)
+← [Back to all activations](/events/)

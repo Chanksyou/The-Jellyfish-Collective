@@ -1,0 +1,42 @@
+---
+layout: base.njk
+---
+{#
+  Activation page. Pulls its cover photo and gallery from src/_data/photos.json
+  and its prev/next neighbours from src/_data/events.json, keyed by `slug`.
+#}
+{% set cover = photos[slug] | cover %}
+
+<header class="event-hero{% if not cover %} event-hero--bare{% endif %}">
+  {% if cover %}
+  <div class="event-hero__photo">
+    <img src="{{ cover.src }}" alt="{{ cover.alt }}" width="{{ cover.w }}" height="{{ cover.h }}"
+         style="object-position: {{ cover.focus }}" fetchpriority="high">
+  </div>
+  {% endif %}
+  <div class="event-hero__text">
+    <p class="eyebrow">Jellyfish Collective</p>
+    <h1>{{ title }}</h1>
+    {% if tagline %}<p class="lede">{{ tagline }}</p>{% endif %}
+  </div>
+</header>
+
+<main id="main" class="prose prose--event">
+  {{ content | safe }}
+</main>
+
+{% set near = events | neighbours(slug) %}
+<nav class="event-pager" aria-label="More activations">
+  {% for e in [near.newer, near.older] %}
+    {% if e %}
+    {% set ec = photos[e.slug] | cover %}
+    <a class="event-pager__link{% if loop.last %} event-pager__link--older{% endif %}" href="/events/{{ e.slug }}/">
+      {% if ec %}<img src="{{ ec.sm }}" alt="" loading="lazy" style="object-position: {{ ec.focus }}">{% endif %}
+      <span class="event-pager__dir">{% if loop.first %}← Newer{% else %}Older →{% endif %}</span>
+      <span class="event-pager__name">{{ e.name }} {{ e.year }}</span>
+    </a>
+    {% else %}
+    <span class="event-pager__spacer"></span>
+    {% endif %}
+  {% endfor %}
+</nav>

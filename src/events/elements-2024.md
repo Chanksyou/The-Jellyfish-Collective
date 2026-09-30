@@ -1,5 +1,6 @@
 ---
-layout: layout.njk
+layout: event.njk
+slug: elements-2024
 title: Elements 2024
 tagline: Where the activations started.
 wide: true
@@ -24,35 +25,14 @@ wide: true
 
 ---
 
-## Site layout
-
-<!-- Add a floor plan image or written layout description here -->
-
----
+<!-- ## Site layout
+     Add a floor plan image or written layout description here, then
+     un-comment this heading. -->
 
 ## Photos
 
-<div class="gallery">
-  <figure class="tall">
-    <img src="/img/img-1693.webp"
-         alt="The Jellyfish Collective"
-         loading="lazy" width="1600" height="2133">
-    <figcaption>The Jellyfish Collective</figcaption>
-  </figure>
-  <figure class="tall">
-    <img src="/img/img-1809.webp"
-         alt="The Jellyfish Collective"
-         loading="lazy" width="1600" height="2133">
-    <figcaption>The Jellyfish Collective</figcaption>
-  </figure>
-  <figure class="tall">
-    <img src="/img/img-2252.webp"
-         alt="The Jellyfish Collective"
-         loading="lazy" width="1600" height="2133">
-    <figcaption>The Jellyfish Collective</figcaption>
-  </figure>
-</div>
+{% include "photo-grid.njk" %}
 
 ---
 
-← [Back to all activations](/)
+← [Back to all activations](/events/)

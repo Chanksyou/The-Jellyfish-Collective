@@ -1,5 +1,6 @@
 ---
-layout: layout.njk
+layout: event.njk
+slug: loveburn-2026
 title: Love Burn 2026
 tagline: Prime placement at Virginia Key.
 wide: true
@@ -28,16 +29,14 @@ wide: true
 
 ---
 
-## Site layout
-
-<!-- Add a floor plan image or written layout description here -->
-
----
+<!-- ## Site layout
+     Add a floor plan image or written layout description here, then
+     un-comment this heading. -->
 
 ## Photos
 
-<div class="gallery-empty">Photos coming soon — check <a href="https://www.instagram.com/the_jellyfish_collective">Instagram</a> in the meantime.</div>
+{% include "photo-grid.njk" %}
 
 ---
 
-← [Back to all activations](/)
+← [Back to all activations](/events/)

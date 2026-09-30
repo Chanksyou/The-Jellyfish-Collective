@@ -1,0 +1,74 @@
+<dialog class="lightbox" aria-label="Photo viewer">
+  <figure class="lightbox__stage">
+    <img class="lightbox__img" alt="">
+    <figcaption class="lightbox__caption"></figcaption>
+  </figure>
+  <button class="lightbox__btn lightbox__close" type="button" aria-label="Close">×</button>
+  <button class="lightbox__btn lightbox__prev" type="button" aria-label="Previous photo">‹</button>
+  <button class="lightbox__btn lightbox__next" type="button" aria-label="Next photo">›</button>
+  <p class="lightbox__count" aria-live="polite"></p>
+</dialog>
+<script>
+(() => {
+  document.documentElement.classList.add('js');
+
+  // Fade photos up as they drift into view.
+  const reveal = document.querySelectorAll('.photo-grid__item, .photo-row img, .activation-gallery > a');
+  if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const io = new IntersectionObserver(entries => entries.forEach(e => {
+      if (e.isIntersecting || e.boundingClientRect.top < 0) { e.target.classList.add('is-in'); io.unobserve(e.target); }
+    }), { rootMargin: '0px 0px -8% 0px' });
+    reveal.forEach(el => { el.classList.add('reveal'); io.observe(el); });
+  }
+
+  const box = document.querySelector('.lightbox');
+  if (!box || !box.showModal) return;
+  const img = box.querySelector('.lightbox__img');
+  const cap = box.querySelector('.lightbox__caption');
+  const count = box.querySelector('.lightbox__count');
+  let items = [], i = 0;
+
+  const show = n => {
+    i = (n + items.length) % items.length;
+    const a = items[i];
+    img.classList.remove('is-loaded');
+    img.onload = () => img.classList.add('is-loaded');
+    img.src = a.getAttribute('href');
+    img.alt = a.querySelector('img')?.alt || '';
+    cap.textContent = a.dataset.caption || '';
+    count.textContent = items.length > 1 ? `${i + 1} / ${items.length}` : '';
+    // Warm the neighbours so arrowing through feels instant.
+    [i + 1, i - 1].forEach(k => { const b = items[(k + items.length) % items.length]; if (b) new Image().src = b.getAttribute('href'); });
+  };
+
+  document.addEventListener('click', e => {
+    const a = e.target.closest('[data-lightbox]');
+    if (!a || e.metaKey || e.ctrlKey || e.shiftKey) return;
+    e.preventDefault();
+    const group = a.closest('[data-lightbox-group]');
+    items = [...(group || document).querySelectorAll('[data-lightbox]')].filter(el => el.offsetParent !== null);
+    box.showModal();
+    document.body.classList.add('has-lightbox');
+    show(items.indexOf(a));
+  });
+
+  box.querySelector('.lightbox__close').onclick = () => box.close();
+  box.querySelector('.lightbox__prev').onclick = () => show(i - 1);
+  box.querySelector('.lightbox__next').onclick = () => show(i + 1);
+  box.addEventListener('close', () => { document.body.classList.remove('has-lightbox'); img.removeAttribute('src'); });
+  box.addEventListener('click', e => { if (e.target === box || e.target.classList.contains('lightbox__stage')) box.close(); });
+  box.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight') show(i + 1);
+    if (e.key === 'ArrowLeft') show(i - 1);
+  });
+
+  let x0 = null;
+  box.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; }, { passive: true });
+  box.addEventListener('touchend', e => {
+    if (x0 === null) return;
+    const dx = e.changedTouches[0].clientX - x0;
+    if (Math.abs(dx) > 50) show(i + (dx < 0 ? 1 : -1));
+    x0 = null;
+  });
+})();
+</script>

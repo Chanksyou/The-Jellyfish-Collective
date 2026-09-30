@@ -14,6 +14,9 @@ A prime, high-visibility placement earned off the previous years' builds.
 <!-- NEEDS DETAIL: what went up, what was new, the moment people still
      bring up -->
 
+{% set slug = "elements-2026" %}{% set label = "Elements 2026" %}
+{% include "event-strip.njk" %}
+
 ---
 
 ## Showcation 2026
@@ -36,6 +39,9 @@ activation.
 <!-- VERIFY: this is drawn from the pitch deck, which describes what was
      proposed. Confirm what actually got built. -->
 
+{% set slug = "showcation-2026" %}{% set label = "Showcation 2026" %}
+{% include "event-strip.njk" %}
+
 ---
 
 ## Love Burn 2026
@@ -45,6 +51,9 @@ activation.
 A prime, high-visibility placement, same as Elements that year.
 
 <!-- NEEDS DETAIL -->
+
+{% set slug = "loveburn-2026" %}{% set label = "Love Burn 2026" %}
+{% include "event-strip.njk" %}
 
 ---
 
@@ -56,6 +65,9 @@ Our first Showcation.
 
 <!-- NEEDS DETAIL -->
 
+{% set slug = "showcation-2025" %}{% set label = "Showcation 2025" %}
+{% include "event-strip.njk" %}
+
 ---
 
 ## Elements 2025
@@ -63,6 +75,9 @@ Our first Showcation.
 **August 2025 · Lakewood, PA**
 
 <!-- NEEDS DETAIL -->
+
+{% set slug = "elements-2025" %}{% set label = "Elements 2025" %}
+{% include "event-strip.njk" %}
 
 ---
 
@@ -72,6 +87,9 @@ Our first Showcation.
 
 <!-- NEEDS DETAIL -->
 
+{% set slug = "loveburn-2025" %}{% set label = "Love Burn 2025" %}
+{% include "event-strip.njk" %}
+
 ---
 
 ## Elements 2024
@@ -79,6 +97,9 @@ Our first Showcation.
 **August 2024 · Lakewood, PA**
 
 <!-- NEEDS DETAIL -->
+
+{% set slug = "elements-2024" %}{% set label = "Elements 2024" %}
+{% include "event-strip.njk" %}
 
 ---
 
