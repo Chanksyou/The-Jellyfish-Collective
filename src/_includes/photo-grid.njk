@@ -1,0 +1,10 @@
+{#- Masonry photo grid with lightbox. Set `slug` (one event from photos.json)
+    before including. Thumbnails load in the grid; the full-size file opens in
+    the lightbox, or as a plain page if JavaScript is off.
+    Whitespace control on the tags keeps Markdown from reading indented output
+    as a code block. -#}
+<div class="photo-grid" data-lightbox-group>
+{%- for p in photos[slug] -%}
+<a class="photo-grid__item" style="--r: {{ (p.w / p.h) | round(3) }}" href="{{ p.src }}" data-lightbox data-caption="{{ p.alt }}"><img src="{{ p.sm }}" alt="{{ p.alt }}" width="{{ p.w }}" height="{{ p.h }}" loading="lazy" decoding="async"></a>
+{%- endfor -%}
+</div>

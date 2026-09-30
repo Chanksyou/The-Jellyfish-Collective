@@ -1,5 +1,6 @@
 ---
-layout: layout.njk
+layout: event.njk
+slug: showcation-2025
 title: Showcation 2025
 tagline: Our first Showcation. The lounge ran by day, the dancefloor ran all night.
 wide: true
@@ -20,24 +21,14 @@ wide: true
 
 ---
 
-## Site layout
-
-<!-- Add a floor plan image or written layout description here -->
-
----
+<!-- ## Site layout
+     Add a floor plan image or written layout description here, then
+     un-comment this heading. -->
 
 ## Photos
 
-{% set photos = [
-  { src: "/img/showcation-pixiedream-2025-05-16-proquality-horizontal-cabins-music2.webp", alt: "Pixiedream cabins at Showcation 2025" },
-  { src: "/img/20250518-034031.webp", alt: "Showcation 2025" },
-  { src: "/img/20250519-004642.webp", alt: "Showcation 2025" },
-  { src: "/img/20250518-034826.webp", alt: "Showcation 2025" }
-] %}
-{% set ctaLink = "/activations/showcation-2025/" %}
-{% set ctaLabel = "All photos →" %}
-{% include "activation-gallery.njk" %}
+{% include "photo-grid.njk" %}
 
 ---
 
-← [Back to all activations](/)
+← [Back to all activations](/events/)

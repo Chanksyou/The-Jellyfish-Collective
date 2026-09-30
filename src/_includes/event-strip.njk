@@ -1,0 +1,11 @@
+{#- Four-photo teaser for one activation, linking through to its page.
+    Set `slug` and `label` before including. -#}
+{%- set list = photos[slug] -%}
+{%- set cover = list | cover -%}
+<div class="activation-gallery">
+<a class="photo-featured" href="/events/{{ slug }}/" tabindex="-1" aria-hidden="true"><img src="{{ cover.sm }}" alt="" loading="lazy" style="object-position: {{ cover.focus }}"></a>
+{%- for p in list | teaser -%}
+<a class="photo-sm" href="/events/{{ slug }}/" tabindex="-1" aria-hidden="true"><img src="{{ p.sm }}" alt="" loading="lazy"></a>
+{%- endfor -%}
+<a href="/events/{{ slug }}/" class="photo-cta"><span class="photo-cta__label">{{ label }}</span><span class="photo-cta__arrow">{{ list.length }} photos · Full details →</span></a>
+</div>
