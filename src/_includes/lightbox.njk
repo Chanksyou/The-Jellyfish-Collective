@@ -41,15 +41,23 @@
     [i + 1, i - 1].forEach(k => { const b = items[(k + items.length) % items.length]; if (b) new Image().src = b.getAttribute('href'); });
   };
 
+  const open = (list, n) => {
+    if (!list.length) return;
+    items = list;
+    box.showModal();
+    document.body.classList.add('has-lightbox');
+    show(n);
+  };
+  // Other scripts (the gallery's drift view) open photos through this.
+  window.JellyLightbox = { open };
+
   document.addEventListener('click', e => {
     const a = e.target.closest('[data-lightbox]');
     if (!a || e.metaKey || e.ctrlKey || e.shiftKey) return;
     e.preventDefault();
     const group = a.closest('[data-lightbox-group]');
-    items = [...(group || document).querySelectorAll('[data-lightbox]')].filter(el => el.offsetParent !== null);
-    box.showModal();
-    document.body.classList.add('has-lightbox');
-    show(items.indexOf(a));
+    const list = [...(group || document).querySelectorAll('[data-lightbox]')].filter(el => el.offsetParent !== null);
+    open(list, list.indexOf(a));
   });
 
   box.querySelector('.lightbox__close').onclick = () => box.close();

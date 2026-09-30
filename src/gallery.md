@@ -12,11 +12,22 @@ wide: true
      It shows up here, on the event's own page, and in the Events teasers.
 -->
 
+<div class="gallery-bar">
+<div class="gallery-view" role="group" aria-label="Gallery view">
+<button type="button" class="gallery-view__btn" data-view="drift" aria-pressed="true">Drift</button>
+<button type="button" class="gallery-view__btn" data-view="grid" aria-pressed="false">Grid</button>
+</div>
 <div class="gallery-filter" role="group" aria-label="Filter photos by activation">
 <button type="button" class="gallery-filter__chip" data-filter="all" aria-pressed="true">All</button>
 {%- for e in events -%}
 <button type="button" class="gallery-filter__chip" data-filter="{{ e.slug }}" aria-pressed="false">{{ e.name }} {{ e.year }}</button>
 {%- endfor -%}
+</div>
+</div>
+
+<div class="drift" data-drift hidden>
+<div class="drift__layer"></div>
+<p class="drift__hint">Hover to hold a photo still · click to open it</p>
 </div>
 
 <div class="photo-grid photo-grid--wall" data-lightbox-group>
@@ -29,12 +40,33 @@ wide: true
 (() => {
   const chips = document.querySelectorAll('.gallery-filter__chip');
   const items = document.querySelectorAll('.photo-grid--wall .photo-grid__item');
+  const views = document.querySelectorAll('.gallery-view__btn');
+  const drift = document.querySelector('[data-drift]');
+  const grid = document.querySelector('.photo-grid--wall');
+
   chips.forEach(chip => chip.addEventListener('click', () => {
     const f = chip.dataset.filter;
     chips.forEach(c => c.setAttribute('aria-pressed', String(c === chip)));
     items.forEach(it => { it.hidden = f !== 'all' && it.dataset.event !== f; });
+    window.JellyDrift?.refresh();
   }));
+
+  // Drift is the default unless the viewer asked for less motion or picked
+  // the grid last time (remembered per browser, if storage is available).
+  const setView = v => {
+    views.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.view === v)));
+    drift.hidden = v !== 'drift';
+    grid.classList.toggle('is-offstage', v === 'drift');
+    try { localStorage.setItem('gallery-view', v); } catch {}
+    window.JellyDrift?.refresh();
+  };
+  views.forEach(b => b.addEventListener('click', () => setView(b.dataset.view)));
+  let saved = null;
+  try { saved = localStorage.getItem('gallery-view'); } catch {}
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  setView(saved || (reduce ? 'grid' : 'drift'));
 })();
 </script>
+<script src="/js/drift.js" defer></script>
 
 More on [Instagram](https://www.instagram.com/the_jellyfish_collective).

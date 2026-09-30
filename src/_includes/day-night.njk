@@ -1,0 +1,14 @@
+{#- Day-to-night wipe. Set `slug` before including; renders nothing unless
+    src/_data/daynight.json has a pair for it. Drag (or arrow keys on the
+    focused slider) to wipe between the two photos. -#}
+{%- set dn = daynight[slug] -%}
+{%- if dn -%}
+<figure class="daynight" data-daynight style="--pos: 50%">
+<img class="daynight__night" src="{{ dn.night.src }}" alt="{{ dn.night.alt }}" width="{{ dn.night.w }}" height="{{ dn.night.h }}" loading="lazy" decoding="async">
+<div class="daynight__day"><img src="{{ dn.day.src }}" alt="{{ dn.day.alt }}" width="{{ dn.day.w }}" height="{{ dn.day.h }}" loading="lazy" decoding="async"></div>
+<span class="daynight__label daynight__label--day" aria-hidden="true">Day</span>
+<span class="daynight__label daynight__label--night" aria-hidden="true">Night</span>
+<span class="daynight__handle" aria-hidden="true"><span class="daynight__knob"></span></span>
+<input class="daynight__range" type="range" min="0" max="100" value="50" aria-label="Wipe between day and night">
+</figure>
+{%- endif -%}
