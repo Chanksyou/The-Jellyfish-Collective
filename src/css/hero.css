@@ -63,6 +63,34 @@
   object-position: center center;
 }
 
+/* Headline in the display face, matching the rest of the site. */
+.hero__text h1 {
+  font-family: var(--display);
+  font-weight: 300;
+  font-size: clamp(2.75rem, 6vw, 4.5rem);
+  line-height: 1;
+  letter-spacing: -0.025em;
+  color: var(--foam);
+  margin: 0;
+  text-shadow: 0 2px 24px rgba(6, 11, 20, 0.7);
+}
+.hero__text .lede {
+  color: var(--foam);
+  text-shadow: 0 1px 12px rgba(6, 11, 20, 0.9);
+}
+/* The button keeps its own width instead of stretching with the column. */
+.hero__text .cta-btn {
+  align-self: flex-start;
+}
+/* A soft shadow on the photo's left side, behind the text. */
+.hero__photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(6, 11, 20, 0.75) 0%, rgba(6, 11, 20, 0.35) 35%, transparent 60%);
+  pointer-events: none;
+}
+
 /* On small screens: remove margin, image fills full width behind text */
 @media (max-width: 55rem) {
   .hero {

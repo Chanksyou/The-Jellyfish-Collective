@@ -113,6 +113,12 @@
   padding: 1rem 1rem 1rem 0;
 }
 
+/* With no write-up, the divider after the facts strip just doubles its
+   bottom border. */
+.prose--event .setup-grid + hr {
+  display: none;
+}
+
 /* ── Photo grid (justified rows) ───────────────────────────────────────
    Each tile grows in proportion to its aspect ratio (--r, set inline), so
    every row fills the width edge to edge at one shared height — no ragged
