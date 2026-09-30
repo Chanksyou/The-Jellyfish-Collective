@@ -2,7 +2,6 @@
 layout: event.njk
 slug: loveburn-2026
 title: Love Burn 2026
-tagline: Prime placement at Virginia Key.
 wide: true
 ---
 
@@ -18,10 +17,6 @@ wide: true
   <div class="setup-item">
     <p class="setup-item__label">Location</p>
     <p class="setup-item__value">Virginia Key, FL</p>
-  </div>
-  <div class="setup-item">
-    <p class="setup-item__label">Placement</p>
-    <p class="setup-item__value">Prime, high-visibility</p>
   </div>
 </div>
 

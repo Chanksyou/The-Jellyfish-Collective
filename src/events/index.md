@@ -9,8 +9,6 @@ tagline: Everywhere the jellyfish has washed up so far.
 
 **August 2026 · Lakewood, PA**
 
-A prime, high-visibility placement earned off the previous years' builds.
-
 <!-- NEEDS DETAIL: what went up, what was new, the moment people still
      bring up -->
 
@@ -47,8 +45,6 @@ activation.
 ## Love Burn 2026
 
 **February 2026 · Virginia Key, FL**
-
-A prime, high-visibility placement, same as Elements that year.
 
 <!-- NEEDS DETAIL -->
 
