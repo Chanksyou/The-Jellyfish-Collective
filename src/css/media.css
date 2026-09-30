@@ -52,17 +52,24 @@
     linear-gradient(to top, rgba(6, 11, 20, 0.85) 0%, rgba(6, 11, 20, 0) 55%),
     linear-gradient(to right, rgba(6, 11, 20, 0.55) 0%, rgba(6, 11, 20, 0) 60%);
 }
+/* Slides stack; the active one fades up and slowly pushes in. */
 .event-hero__photo img {
+  position: absolute;
+  inset: 0;
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  animation: hero-drift 18s var(--ease-out) both;
+  opacity: 0;
+  transition: opacity 2s ease;
 }
-@keyframes hero-drift {
-  from { transform: scale(1.08); opacity: 0; }
-  12% { opacity: 1; }
-  to { transform: scale(1); opacity: 1; }
+.event-hero__photo img.is-active {
+  opacity: 1;
+  animation: hero-push 9s var(--ease-out) both;
+}
+@keyframes hero-push {
+  from { transform: scale(1.09); }
+  to { transform: scale(1); }
 }
 
 .event-hero__text {
@@ -524,7 +531,7 @@ body.has-lightbox {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .event-hero__photo img {
+  .event-hero__photo img.is-active {
     animation: none;
   }
   .photo-grid img,
@@ -533,5 +540,297 @@ body.has-lightbox {
   .event-pager__link img,
   .lightbox__img {
     transition: none;
+  }
+}
+
+/* ── Day / night wipe ──────────────────────────────────────────────────── */
+.daynight {
+  position: relative;
+  width: min(var(--wide), 62rem);
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 2.5rem 0;
+  aspect-ratio: 16 / 10;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--deep);
+  cursor: ew-resize;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+  box-shadow: 0 30px 80px -30px rgba(176, 124, 255, 0.35);
+}
+.prose .daynight img,
+.daynight img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: 0;
+  pointer-events: none;
+}
+.daynight__day {
+  position: absolute;
+  inset: 0;
+  clip-path: inset(0 calc(100% - var(--pos)) 0 0);
+}
+.daynight__handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--pos);
+  width: 2px;
+  margin-left: -1px;
+  background: var(--bell-hot);
+  box-shadow: 0 0 18px var(--bell), 0 0 4px var(--bell-hot);
+  pointer-events: none;
+}
+.daynight__knob {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2.75rem;
+  height: 2.75rem;
+  translate: -50% -50%;
+  border-radius: 50%;
+  background: rgba(6, 11, 20, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1.5px solid var(--bell-hot);
+  box-shadow: 0 0 24px rgba(95, 227, 200, 0.6);
+  transition: scale 0.25s var(--ease-out);
+}
+.daynight__knob::before,
+.daynight__knob::after {
+  /* Two small chevrons: ‹ › */
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 0.45rem;
+  height: 0.45rem;
+  border: solid var(--bell-hot);
+  border-width: 0 0 2px 2px;
+}
+.daynight__knob::before {
+  left: 0.6rem;
+  transform: translateY(-50%) rotate(45deg);
+}
+.daynight__knob::after {
+  right: 0.6rem;
+  transform: translateY(-50%) rotate(-135deg);
+}
+.daynight.is-dragging .daynight__knob,
+.daynight:hover .daynight__knob {
+  scale: 1.1;
+}
+.daynight__label {
+  position: absolute;
+  top: 1rem;
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  pointer-events: none;
+}
+.daynight__label--day {
+  left: 1rem;
+  color: #3a2a10;
+  background: rgba(255, 236, 200, 0.75);
+}
+.daynight__label--night {
+  right: 1rem;
+  color: var(--foam);
+  background: rgba(40, 20, 80, 0.6);
+}
+/* The range input is the keyboard/screen-reader control: visually hidden,
+   still focusable; its focus ring shows on the knob. */
+.daynight__range {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+.daynight:has(.daynight__range:focus-visible) .daynight__knob {
+  outline: 2px solid var(--ember);
+  outline-offset: 3px;
+}
+
+/* ── Gallery toolbar ───────────────────────────────────────────────────── */
+.gallery-bar {
+  position: relative;
+  width: var(--wide);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.25rem;
+  margin: 0 0 1.5rem;
+}
+.gallery-bar .gallery-filter {
+  position: static;
+  width: auto;
+  transform: none;
+  margin: 0;
+  flex: 1 1 20rem;
+}
+.gallery-view {
+  display: inline-flex;
+  padding: 0.2rem;
+  border-radius: 999px;
+  border: 1px solid rgba(95, 227, 200, 0.2);
+  background: rgba(12, 26, 43, 0.6);
+}
+.gallery-view__btn {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--drift);
+  background: none;
+  border: 0;
+  border-radius: 999px;
+  padding: 0.45rem 0.95rem;
+  cursor: pointer;
+}
+.gallery-view__btn[aria-pressed="true"] {
+  color: var(--abyss);
+  background: var(--tendril);
+}
+.photo-grid.is-offstage {
+  display: none;
+}
+
+/* ── Drift view ────────────────────────────────────────────────────────── */
+/* The stage is full-bleed (100vw); clip keeps a scrollbar's width from
+   turning that into a sideways scroll. */
+body {
+  overflow-x: clip;
+}
+.drift {
+  position: relative;
+  width: 100vw;
+  left: 50%;
+  transform: translateX(-50%);
+  height: clamp(30rem, 82vh, 58rem);
+  margin: 0 0 2rem;
+  overflow: hidden;
+  /* Fade in and out at the surface and the floor. */
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 12%, #000 85%, transparent);
+  mask-image: linear-gradient(to bottom, transparent, #000 12%, #000 85%, transparent);
+  background:
+    radial-gradient(60% 50% at 50% 110%, rgba(176, 124, 255, 0.16), transparent 70%),
+    radial-gradient(50% 40% at 20% 0%, rgba(95, 227, 200, 0.1), transparent 70%);
+}
+.drift[hidden] {
+  display: none;
+}
+/* Drifting motes of plankton, pure CSS. */
+.drift::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(1.5px 1.5px at 12% 20%, rgba(168, 255, 238, 0.5), transparent 60%),
+    radial-gradient(1px 1px at 38% 70%, rgba(168, 255, 238, 0.45), transparent 60%),
+    radial-gradient(2px 2px at 64% 35%, rgba(200, 107, 255, 0.4), transparent 60%),
+    radial-gradient(1px 1px at 82% 80%, rgba(168, 255, 238, 0.4), transparent 60%),
+    radial-gradient(1.5px 1.5px at 92% 12%, rgba(255, 138, 216, 0.35), transparent 60%);
+  background-size: 340px 340px;
+  animation: motes 40s linear infinite;
+  pointer-events: none;
+}
+@keyframes motes {
+  to { background-position: 0 -340px; }
+}
+.drift__layer {
+  position: absolute;
+  inset: 0;
+}
+.drift__item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--deep);
+  cursor: pointer;
+  will-change: transform;
+  filter: blur(var(--blur, 0)) brightness(var(--dim, 1));
+  box-shadow: 0 18px 40px -18px rgba(0, 0, 0, 0.8);
+  transition:
+    filter 0.4s,
+    box-shadow 0.4s;
+}
+.drift__item img {
+  display: block;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+}
+.drift__item:hover,
+.drift__item:focus-visible {
+  filter: none;
+  z-index: 200 !important;
+  box-shadow:
+    0 0 0 1px rgba(95, 227, 200, 0.7),
+    0 0 40px rgba(95, 227, 200, 0.35),
+    0 24px 60px -20px rgba(0, 0, 0, 0.9);
+}
+.drift__tag {
+  position: absolute;
+  left: 0.5rem;
+  bottom: 0.5rem;
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--foam);
+  background: rgba(6, 11, 20, 0.6);
+  padding: 0.25rem 0.5rem;
+  border-radius: 999px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.drift__item:hover .drift__tag,
+.drift__item:focus-visible .drift__tag {
+  opacity: 1;
+}
+.drift__hint {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 9%;
+  margin: 0;
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--drift);
+  opacity: 0.7;
+  pointer-events: none;
+  z-index: 300;
+}
+@media (hover: none) {
+  .drift__hint {
+    font-size: 0;
+  }
+  .drift__hint::after {
+    content: "Tap a photo to open it";
+    font-size: 0.66rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .drift::before {
+    animation: none;
   }
 }

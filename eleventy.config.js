@@ -1,12 +1,20 @@
 export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/css");
   eleventyConfig.addPassthroughCopy("src/img");
+  eleventyConfig.addPassthroughCopy("src/js");
 
   // Newest-first list of past activations, if you later split them into files.
   eleventyConfig.addFilter("year", () => new Date().getFullYear());
 
   // Photo helpers — data lives in src/_data/photos.json and events.json.
   eleventyConfig.addFilter("cover", (list) => (list || []).find((p) => p.cover) || (list || [])[0]);
+  // Cover plus a few more wide shots for the crossfading event hero.
+  eleventyConfig.addFilter("heroSet", (list, n = 3) => {
+    const c = (list || []).find((p) => p.cover) || (list || [])[0];
+    return (list || [])
+      .filter((p) => p !== c && p.src.startsWith("/img/events/") && p.w > p.h * 1.15)
+      .slice(0, n);
+  });
   eleventyConfig.addFilter("teaser", (list, n = 3) => {
     const c = (list || []).find((p) => p.cover) || (list || [])[0];
     return (list || []).filter((p) => p !== c).slice(0, n);

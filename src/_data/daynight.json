@@ -1,0 +1,44 @@
+{
+ "loveburn-2025": {
+  "day": {
+   "src": "/img/events/loveburn-2025/booth-day.webp",
+   "w": 2000,
+   "h": 1500,
+   "alt": "A DJ at the wooden jellyfish booth in the afternoon"
+  },
+  "night": {
+   "src": "/img/events/loveburn-2025/booth-night.webp",
+   "w": 836,
+   "h": 627,
+   "alt": "The jellyfish-logo DJ booth lit in violet and cyan"
+  }
+ },
+ "elements-2025": {
+  "day": {
+   "src": "/img/events/elements-2025/booth-day.webp",
+   "w": 2000,
+   "h": 1500,
+   "alt": "A DJ in the bamboo-framed booth by daylight"
+  },
+  "night": {
+   "src": "/img/events/elements-2025/tent-night.webp",
+   "w": 2000,
+   "h": 1500,
+   "alt": "The star tent at night with glowing umbrella jellyfish standing guard outside"
+  }
+ },
+ "showcation-2025": {
+  "day": {
+   "src": "/img/events/showcation-2025/booth-day.webp",
+   "w": 2000,
+   "h": 1500,
+   "alt": "The DJ booth by day under a curtain of vines"
+  },
+  "night": {
+   "src": "/img/events/showcation-2025/tent-dusk.webp",
+   "w": 2000,
+   "h": 1500,
+   "alt": "The star tent at dusk, ringed with string lights in the trees"
+  }
+ }
+}

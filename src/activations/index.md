@@ -7,6 +7,8 @@ tagline: todo
 We customise how we activate with the event we are going to and the group we are going with.
 However, core parts of how we activate are detailed below.
 
+{% set slug = "loveburn-2025" %}{% include "day-night.njk" %}
+
 ---
 
 ## Jelly Dance floor

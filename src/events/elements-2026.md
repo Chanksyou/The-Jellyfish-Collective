@@ -2,7 +2,6 @@
 layout: event.njk
 slug: elements-2026
 title: Elements 2026
-tagline: A prime placement earned off three years of builds.
 wide: true
 ---
 
@@ -18,10 +17,6 @@ wide: true
   <div class="setup-item">
     <p class="setup-item__label">Location</p>
     <p class="setup-item__value">Lakewood, PA</p>
-  </div>
-  <div class="setup-item">
-    <p class="setup-item__label">Placement</p>
-    <p class="setup-item__value">Prime, high-visibility</p>
   </div>
 </div>
 

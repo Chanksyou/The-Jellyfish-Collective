@@ -9,9 +9,13 @@ layout: base.njk
 
 <header class="event-hero{% if not cover %} event-hero--bare{% endif %}">
   {% if cover %}
-  <div class="event-hero__photo">
-    <img src="{{ cover.src }}" alt="{{ cover.alt }}" width="{{ cover.w }}" height="{{ cover.h }}"
+  <div class="event-hero__photo" data-hero-slides>
+    <img class="is-active" src="{{ cover.src }}" alt="{{ cover.alt }}" width="{{ cover.w }}" height="{{ cover.h }}"
          style="object-position: {{ cover.focus }}" fetchpriority="high">
+    {#- Extra shots load after the page does (site.js), then crossfade in. #}
+    {%- for p in photos[slug] | heroSet %}
+    <img data-src="{{ p.src }}" alt="" aria-hidden="true" width="{{ p.w }}" height="{{ p.h }}" style="object-position: {{ p.focus }}">
+    {%- endfor %}
   </div>
   {% endif %}
   <div class="event-hero__text">

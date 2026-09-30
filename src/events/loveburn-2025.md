@@ -29,6 +29,8 @@ wide: true
      Add a floor plan image or written layout description here, then
      un-comment this heading. -->
 
+{% include "day-night.njk" %}
+
 ## Photos
 
 {% include "photo-grid.njk" %}
