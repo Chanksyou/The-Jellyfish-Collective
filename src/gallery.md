@@ -32,7 +32,7 @@ wide: true
 
 <div class="photo-grid photo-grid--wall" data-lightbox-group>
 {%- for p in photos | wall(events) -%}
-<a class="photo-grid__item" style="--r: {{ (p.w / p.h) | round(3) }}" href="{{ p.src }}" data-event="{{ p.event.slug }}" data-lightbox data-caption="{{ p.alt }} · {{ p.event.name }} {{ p.event.year }}"><img src="{{ p.sm }}" alt="{{ p.alt }}" width="{{ p.w }}" height="{{ p.h }}" loading="lazy" decoding="async"><span class="photo-grid__tag">{{ p.event.name }} {{ p.event.year }}</span></a>
+<a class="photo-grid__item" style="--r: {{ (p.w / p.h) | round(3) }}" href="{{ p.src }}" data-event="{{ p.event.slug }}" data-lightbox data-caption="{{ p.alt }} · {{ p.event.name }} {{ p.event.year }}"><img src="{{ p.sm }}" alt="{{ p.alt }}" width="{{ p.w }}" height="{{ p.h }}" loading="lazy" decoding="async" style="object-position: {{ p.focus }}"><span class="photo-grid__tag">{{ p.event.name }} {{ p.event.year }}</span></a>
 {%- endfor -%}
 </div>
 
