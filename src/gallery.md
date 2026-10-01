@@ -27,7 +27,6 @@ wide: true
 
 <div class="drift" data-drift hidden>
 <div class="drift__layer"></div>
-<p class="drift__hint">Hover to hold a photo still · click to open it</p>
 </div>
 
 <div class="photo-grid photo-grid--wall" data-lightbox-group>
