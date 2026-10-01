@@ -93,15 +93,29 @@
   grid-row: 1 / 4;
 }
 
-/* Mobile: featured spans full width as a banner, smalls stack below */
+/* Phones: cover photo at a normal 4:3 shape (not a thin banner), a row of
+   three thumbnails under it, then the link as a full-width bar. */
 @media (max-width: 55rem) {
   .activation-gallery {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    aspect-ratio: 1 / 1;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    aspect-ratio: auto;
   }
   .photo-featured {
-    grid-column: 1 / 3;
-    grid-row: 1;
+    grid-column: 1 / -1;
+    grid-row: auto;
+    aspect-ratio: 4 / 3;
+  }
+  .photo-sm {
+    aspect-ratio: 1;
+  }
+  .photo-cta {
+    grid-column: 1 / -1;
+    gap: 0.3rem;
+    padding: 0.85rem 1rem;
+  }
+  .photo-cta__label,
+  .photo-cta__arrow {
+    white-space: nowrap;
   }
 }

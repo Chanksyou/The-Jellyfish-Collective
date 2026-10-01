@@ -7,7 +7,7 @@
    "h": 1500,
    "alt": "A packed dancefloor under the pink-lit canopy, hanging jellyfish glowing overhead",
    "cover": true,
-   "focus": "50% 50%"
+   "focus": "50% 55%"
   },
   {
    "src": "/img/events/elements-2024/jellies-close.webp",
@@ -16,7 +16,7 @@
    "h": 2000,
    "alt": "Ruffled jellyfish lanterns hanging among vines inside the tent",
    "cover": false,
-   "focus": "50% 50%"
+   "focus": "55% 45%"
   },
   {
    "src": "/img/events/elements-2024/crew-day.webp",
@@ -25,7 +25,7 @@
    "h": 2000,
    "alt": "The crew posing together in the sun, one holding a jellyfish staff",
    "cover": false,
-   "focus": "50% 50%"
+   "focus": "50% 55%"
   },
   {
    "src": "/img/events/elements-2024/umbrella-jelly.webp",
@@ -34,7 +34,7 @@
    "h": 2000,
    "alt": "A jelly under a glowing umbrella jellyfish costume",
    "cover": false,
-   "focus": "50% 50%"
+   "focus": "45% 35%"
   },
   {
    "src": "/img/events/elements-2024/dancefloor.webp",
@@ -43,7 +43,7 @@
    "h": 2000,
    "alt": "Dancers under a line of glowing jellyfish",
    "cover": false,
-   "focus": "50% 50%"
+   "focus": "50% 45%"
   },
   {
    "src": "/img/events/elements-2024/dj-crowd.webp",
@@ -61,7 +61,7 @@
    "h": 2000,
    "alt": "The white DJ booth by daylight, a jelly waving from behind the decks",
    "cover": false,
-   "focus": "50% 50%"
+   "focus": "55% 45%"
   },
   {
    "src": "/img/events/elements-2024/disco-ball.webp",
@@ -70,7 +70,7 @@
    "h": 2000,
    "alt": "Violet light, a disco ball, and a crowd under the jellyfish",
    "cover": false,
-   "focus": "50% 50%"
+   "focus": "50% 45%"
   },
   {
    "src": "/img/events/elements-2024/jelly-staff.webp",
@@ -79,7 +79,7 @@
    "h": 2000,
    "alt": "A jellyfish staff held high above the crowd at night",
    "cover": false,
-   "focus": "50% 50%"
+   "focus": "45% 30%"
   },
   {
    "src": "/img/events/elements-2024/crowd-pink.webp",
@@ -88,7 +88,7 @@
    "h": 1500,
    "alt": "The crowd in hot pink light, jellyfish hats bobbing",
    "cover": false,
-   "focus": "50% 50%"
+   "focus": "45% 45%"
   },
   {
    "src": "/img/img-1693.webp",
@@ -106,7 +106,7 @@
    "h": 2133,
    "alt": "A neon OPEN sign beside hanging jellyfish",
    "cover": false,
-   "focus": "50% 50%"
+   "focus": "60% 40%"
   },
   {
    "src": "/img/img-2252.webp",
@@ -115,7 +115,7 @@
    "h": 2133,
    "alt": "A DJ at the decks framed by jellyfish tendrils",
    "cover": false,
-   "focus": "50% 50%"
+   "focus": "55% 50%"
   }
  ],
  "elements-2025": [
@@ -126,7 +126,7 @@
    "h": 1500,
    "alt": "The star tent at night with glowing umbrella jellyfish standing guard outside",
    "cover": true,
-   "focus": "50% 55%"
+   "focus": "55% 50%"
   },
   {
    "src": "/img/events/elements-2025/lasers.webp",
@@ -135,7 +135,7 @@
    "h": 2000,
    "alt": "Green and violet lasers fanning over the dancefloor",
    "cover": false,
-   "focus": "50% 50%"
+   "focus": "50% 35%"
   },
   {
    "src": "/img/events/elements-2025/neon-canopy.webp",
@@ -144,7 +144,7 @@
    "h": 2000,
    "alt": "Neon rings and hanging jellyfish above a packed floor",
    "cover": false,
-   "focus": "50% 50%"
+   "focus": "55% 35%"
   },
   {
    "src": "/img/events/elements-2025/totems.webp",
@@ -153,7 +153,7 @@
    "h": 2000,
    "alt": "Neon jellyfish totems raised against the dusk sky",
    "cover": false,
-   "focus": "50% 50%"
+   "focus": "50% 45%"
   },
   {
    "src": "/img/events/elements-2025/lounge.webp",
@@ -162,7 +162,7 @@
    "h": 2000,
    "alt": "The daytime lounge: rugs, cushions, and people napping in the shade",
    "cover": false,
-   "focus": "50% 50%"
+   "focus": "45% 60%"
   },
   {
    "src": "/img/events/elements-2025/booth-day.webp",
@@ -171,7 +171,7 @@
    "h": 1500,
    "alt": "A DJ in the bamboo-framed booth by daylight",
    "cover": false,
-   "focus": "50% 50%"
+   "focus": "50% 55%"
   },
   {
    "src": "/img/events/elements-2025/crew-van.webp",
@@ -180,7 +180,7 @@
    "h": 1500,
    "alt": "The crew lined up in front of the van",
    "cover": false,
-   "focus": "50% 50%"
+   "focus": "50% 58%"
   }
  ],
  "elements-2026": [
@@ -191,7 +191,7 @@
    "h": 2000,
    "alt": "A jelly surrounded by glowing neon jellyfish totems at night",
    "cover": true,
-   "focus": "50% 35%"
+   "focus": "45% 35%"
   },
   {
    "src": "/img/events/elements-2026/totem-pair.webp",
@@ -200,7 +200,7 @@
    "h": 2000,
    "alt": "Two neon jellyfish totems held high in the crowd",
    "cover": false,
-   "focus": "50% 50%"
+   "focus": "50% 35%"
   },
   {
    "src": "/img/events/elements-2026/jelly-hats.webp",
@@ -209,7 +209,7 @@
    "h": 2000,
    "alt": "Two jellies in iridescent jellyfish hats at the car",
    "cover": false,
-   "focus": "50% 50%"
+   "focus": "35% 55%"
   },
   {
    "src": "/img/events/elements-2026/tent-raise.webp",
@@ -218,7 +218,7 @@
    "h": 627,
    "alt": "Crew raising the stretch tent on build day",
    "cover": false,
-   "focus": "50% 50%"
+   "focus": "50% 45%"
   }
  ],
  "loveburn-2025": [
@@ -229,7 +229,7 @@
    "h": 1333,
    "alt": "Golden hour on the stage, a jelly dancing beside the camp flag",
    "cover": true,
-   "focus": "50% 45%"
+   "focus": "55% 50%"
   },
   {
    "src": "/img/events/loveburn-2025/crew-night.webp",
@@ -238,7 +238,7 @@
    "h": 1500,
    "alt": "The whole crew crowded together for a night photo",
    "cover": false,
-   "focus": "50% 50%"
+   "focus": "50% 45%"
   },
   {
    "src": "/img/events/loveburn-2025/heart-night.webp",
@@ -247,7 +247,7 @@
    "h": 1500,
    "alt": "Glowing jellyfish beside the heart arch and neon OPEN sign",
    "cover": false,
-   "focus": "50% 50%"
+   "focus": "55% 60%"
   },
   {
    "src": "/img/events/loveburn-2025/fog.webp",
@@ -256,7 +256,7 @@
    "h": 627,
    "alt": "Dancers moving through fog under the canopy",
    "cover": false,
-   "focus": "50% 50%"
+   "focus": "55% 60%"
   },
   {
    "src": "/img/events/loveburn-2025/tent-palms.webp",
@@ -265,7 +265,7 @@
    "h": 2000,
    "alt": "The white star tent under palm trees, umbrella jellyfish out front",
    "cover": false,
-   "focus": "50% 50%"
+   "focus": "45% 55%"
   },
   {
    "src": "/img/events/loveburn-2025/flag-heart.webp",
@@ -274,7 +274,7 @@
    "h": 2000,
    "alt": "The camp flag flying over the heart arch at sunset",
    "cover": false,
-   "focus": "50% 50%"
+   "focus": "55% 50%"
   },
   {
    "src": "/img/events/loveburn-2025/booth-night.webp",
@@ -283,7 +283,7 @@
    "h": 627,
    "alt": "The jellyfish-logo DJ booth lit in violet and cyan",
    "cover": false,
-   "focus": "50% 50%"
+   "focus": "55% 55%"
   },
   {
    "src": "/img/events/loveburn-2025/heart-open.webp",
@@ -292,7 +292,7 @@
    "h": 836,
    "alt": "The heart arch glowing in the dark",
    "cover": false,
-   "focus": "50% 50%"
+   "focus": "55% 60%"
   },
   {
    "src": "/img/events/loveburn-2025/booth-day.webp",
@@ -301,7 +301,7 @@
    "h": 1500,
    "alt": "A DJ at the wooden jellyfish booth in the afternoon",
    "cover": false,
-   "focus": "50% 50%"
+   "focus": "45% 65%"
   },
   {
    "src": "/img/events/loveburn-2025/dancing-night.webp",
@@ -310,7 +310,7 @@
    "h": 836,
    "alt": "Dancing under the tent after dark",
    "cover": false,
-   "focus": "50% 50%"
+   "focus": "50% 65%"
   },
   {
    "src": "/img/events/loveburn-2025/booth-jellies.webp",
@@ -319,7 +319,7 @@
    "h": 627,
    "alt": "The booth surrounded by umbrella jellyfish",
    "cover": false,
-   "focus": "50% 50%"
+   "focus": "55% 65%"
   }
  ],
  "loveburn-2026": [
@@ -330,7 +330,7 @@
    "h": 1500,
    "alt": "The tent glowing magenta at night, jellyfish lanterns and a tree strung with light",
    "cover": true,
-   "focus": "50% 50%"
+   "focus": "50% 55%"
   },
   {
    "src": "/img/events/loveburn-2026/lounge-night.webp",
@@ -339,7 +339,7 @@
    "h": 1506,
    "alt": "Blue light washing over the lounge at night",
    "cover": false,
-   "focus": "50% 50%"
+   "focus": "50% 55%"
   },
   {
    "src": "/img/events/loveburn-2026/lounge-day.webp",
@@ -348,7 +348,7 @@
    "h": 2000,
    "alt": "DJs playing to the daytime lounge, rugs and poufs on the floor",
    "cover": false,
-   "focus": "50% 50%"
+   "focus": "55% 55%"
   },
   {
    "src": "/img/events/loveburn-2026/hanging.webp",
@@ -357,7 +357,7 @@
    "h": 2000,
    "alt": "Hanging a jellyfish from the tent peak on a ladder",
    "cover": false,
-   "focus": "50% 50%"
+   "focus": "55% 40%"
   },
   {
    "src": "/img/events/loveburn-2026/lounging.webp",
@@ -366,7 +366,7 @@
    "h": 1125,
    "alt": "Afternoon in the lounge",
    "cover": false,
-   "focus": "50% 50%"
+   "focus": "45% 50%"
   },
   {
    "src": "/img/events/loveburn-2026/build.webp",
@@ -375,7 +375,7 @@
    "h": 1500,
    "alt": "Laying out the tent on build day",
    "cover": false,
-   "focus": "50% 50%"
+   "focus": "50% 60%"
   }
  ],
  "showcation-2025": [
@@ -386,7 +386,7 @@
    "h": 1500,
    "alt": "The star tent at dusk, ringed with string lights in the trees",
    "cover": true,
-   "focus": "50% 55%"
+   "focus": "50% 50%"
   },
   {
    "src": "/img/events/showcation-2025/dj-green.webp",
@@ -395,7 +395,7 @@
    "h": 2000,
    "alt": "A DJ in a jellyfish hat under green light",
    "cover": false,
-   "focus": "50% 50%"
+   "focus": "45% 40%"
   },
   {
    "src": "/img/events/showcation-2025/shelly-sunset.webp",
@@ -404,7 +404,7 @@
    "h": 2000,
    "alt": "Shelly the art car under a pink sunset sky",
    "cover": false,
-   "focus": "50% 50%"
+   "focus": "55% 65%"
   },
   {
    "src": "/img/events/showcation-2025/umbrella-selfie.webp",
@@ -413,7 +413,7 @@
    "h": 2000,
    "alt": "Two jellies grinning under an iridescent jellyfish umbrella",
    "cover": false,
-   "focus": "50% 50%"
+   "focus": "60% 55%"
   },
   {
    "src": "/img/events/showcation-2025/making-jelly.webp",
@@ -422,7 +422,7 @@
    "h": 2000,
    "alt": "Wiring lights into an iridescent jellyfish",
    "cover": false,
-   "focus": "50% 50%"
+   "focus": "45% 50%"
   },
   {
    "src": "/img/events/showcation-2025/dj-violet.webp",
@@ -431,7 +431,7 @@
    "h": 2000,
    "alt": "A DJ under hanging jellyfish in violet light",
    "cover": false,
-   "focus": "50% 50%"
+   "focus": "55% 50%"
   },
   {
    "src": "/img/events/showcation-2025/building-shelly.webp",
@@ -440,7 +440,7 @@
    "h": 1500,
    "alt": "Wrapping Shelly's iridescent bell in the field",
    "cover": false,
-   "focus": "50% 50%"
+   "focus": "45% 55%"
   },
   {
    "src": "/img/events/showcation-2025/booth-day.webp",
@@ -449,7 +449,7 @@
    "h": 1500,
    "alt": "The DJ booth by day under a curtain of vines",
    "cover": false,
-   "focus": "50% 50%"
+   "focus": "50% 70%"
   },
   {
    "src": "/img/showcation-pixiedream-2025-05-16-proquality-horizontal-cabins-music2.webp",
@@ -458,7 +458,7 @@
    "h": 1065,
    "alt": "Pixiedream cabins at Showcation 2025",
    "cover": false,
-   "focus": "50% 50%"
+   "focus": "40% 40%"
   },
   {
    "src": "/img/20250518-034031.webp",
@@ -467,7 +467,7 @@
    "h": 2133,
    "alt": "Showcation 2025 after dark",
    "cover": false,
-   "focus": "50% 50%"
+   "focus": "50% 65%"
   },
   {
    "src": "/img/20250519-004642.webp",
@@ -476,7 +476,7 @@
    "h": 1200,
    "alt": "Showcation 2025 after dark",
    "cover": false,
-   "focus": "50% 50%"
+   "focus": "55% 70%"
   },
   {
    "src": "/img/20250518-034826.webp",
@@ -485,7 +485,7 @@
    "h": 2133,
    "alt": "Showcation 2025 after dark",
    "cover": false,
-   "focus": "50% 50%"
+   "focus": "55% 45%"
   }
  ],
  "showcation-2026": [
@@ -496,7 +496,7 @@
    "h": 2000,
    "alt": "Neon 'jelly' script glowing under the jellyfish canopy",
    "cover": true,
-   "focus": "50% 60%"
+   "focus": "50% 63%"
   },
   {
    "src": "/img/events/showcation-2026/lasers-shelly.webp",
@@ -505,7 +505,7 @@
    "h": 2000,
    "alt": "Lasers over the trees, Shelly and a neon jellyfish on the lawn",
    "cover": false,
-   "focus": "50% 50%"
+   "focus": "55% 50%"
   },
   {
    "src": "/img/events/showcation-2026/laser-tunnel.webp",
@@ -514,7 +514,7 @@
    "h": 2000,
    "alt": "A laser tunnel cutting through the haze over the crowd",
    "cover": false,
-   "focus": "50% 50%"
+   "focus": "45% 38%"
   },
   {
    "src": "/img/events/showcation-2026/shelly-night.webp",
@@ -523,7 +523,7 @@
    "h": 2000,
    "alt": "Shelly lit up at night, neon tendrils trailing",
    "cover": false,
-   "focus": "50% 50%"
+   "focus": "45% 30%"
   },
   {
    "src": "/img/events/showcation-2026/shelly-face.webp",
@@ -532,7 +532,7 @@
    "h": 2000,
    "alt": "Shelly's two faces, glowing orange and violet",
    "cover": false,
-   "focus": "50% 50%"
+   "focus": "45% 45%"
   },
   {
    "src": "/img/events/showcation-2026/sign.webp",
@@ -541,7 +541,7 @@
    "h": 2000,
    "alt": "Two jellies holding the Jellyfish Collective sign by the van",
    "cover": false,
-   "focus": "50% 50%"
+   "focus": "50% 55%"
   },
   {
    "src": "/img/events/showcation-2026/shelly-build.webp",
@@ -550,7 +550,7 @@
    "h": 836,
    "alt": "Drawing Shelly's face on day one",
    "cover": false,
-   "focus": "50% 50%"
+   "focus": "55% 45%"
   }
  ]
 }
