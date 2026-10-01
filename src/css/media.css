@@ -771,38 +771,73 @@ body {
 .drift__layer {
   position: absolute;
   inset: 0;
+  display: grid;
+  grid-template-columns: repeat(var(--cols, 4), 1fr);
+  gap: var(--gap, 12px);
+  padding: 0 var(--gap, 12px);
+}
+.drift__col {
+  position: relative;
+  overflow: hidden;
+  min-width: 0;
+}
+/* Each track holds its photos twice; sliding it by exactly half loops
+   seamlessly. Odd columns rise, even ones sink. */
+.drift__track {
+  display: flex;
+  flex-direction: column;
+  animation: drift-up 60s linear infinite;
+  will-change: transform;
+}
+.drift__track--down {
+  animation-name: drift-down;
+}
+@keyframes drift-up {
+  from { transform: translateY(0); }
+  to { transform: translateY(-50%); }
+}
+@keyframes drift-down {
+  from { transform: translateY(-50%); }
+  to { transform: translateY(0); }
+}
+/* Hover (or keyboard focus) holds the whole column still. */
+.drift__col:hover .drift__track,
+.drift__col:focus-within .drift__track {
+  animation-play-state: paused;
 }
 .drift__item {
-  position: absolute;
-  top: 0;
-  left: 0;
+  position: relative;
+  display: block;
+  width: 100%;
+  margin: 0 0 var(--gap, 12px);
   padding: 0;
   border: 0;
   border-radius: var(--radius);
   overflow: hidden;
   background: var(--deep);
   cursor: pointer;
-  will-change: transform;
-  filter: blur(var(--blur, 0)) brightness(var(--dim, 1));
-  box-shadow: 0 18px 40px -18px rgba(0, 0, 0, 0.8);
-  transition:
-    filter 0.4s,
-    box-shadow 0.4s;
+  box-shadow: 0 18px 40px -22px rgba(0, 0, 0, 0.9);
+  transition: box-shadow 0.4s;
 }
 .drift__item img {
   display: block;
   width: 100%;
   height: auto;
   pointer-events: none;
+  transition:
+    transform 0.9s var(--ease-out),
+    filter 0.5s var(--ease-out);
 }
 .drift__item:hover,
 .drift__item:focus-visible {
-  filter: none;
-  z-index: 200 !important;
   box-shadow:
     0 0 0 1px rgba(95, 227, 200, 0.7),
-    0 0 40px rgba(95, 227, 200, 0.35),
-    0 24px 60px -20px rgba(0, 0, 0, 0.9);
+    0 0 40px rgba(95, 227, 200, 0.3);
+}
+.drift__item:hover img,
+.drift__item:focus-visible img {
+  transform: scale(1.04);
+  filter: saturate(1.15) brightness(1.06);
 }
 .drift__tag {
   position: absolute;
@@ -823,33 +858,9 @@ body {
 .drift__item:focus-visible .drift__tag {
   opacity: 1;
 }
-.drift__hint {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 9%;
-  margin: 0;
-  text-align: center;
-  font-family: var(--mono);
-  font-size: 0.66rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--drift);
-  opacity: 0.7;
-  pointer-events: none;
-  z-index: 300;
-}
-@media (hover: none) {
-  .drift__hint {
-    font-size: 0;
-  }
-  .drift__hint::after {
-    content: "Tap a photo to open it";
-    font-size: 0.66rem;
-  }
-}
 @media (prefers-reduced-motion: reduce) {
-  .drift::before {
+  .drift::before,
+  .drift__track {
     animation: none;
   }
 }

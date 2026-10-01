@@ -99,27 +99,5 @@ Our first Showcation.
 
 ---
 
-## Love Burn 2024
-
-**February 2024 · Virginia Key, FL**
-
-Our first Love Burn.
-
-<!-- NEEDS DETAIL -->
-
----
-
-## Elements 2023
-
-**August 2023 · Lakewood, PA**
-
-Where the activations started.
-
-<!-- NEEDS DETAIL: this predates the shared Drive, so it may only exist in
-     people's memories and camera rolls. Worth writing down before it's
-     gone. -->
-
----
-
 *Photos from every year live in the [gallery](/gallery/) and on
 [Instagram](https://www.instagram.com/the_jellyfish_collective).*
